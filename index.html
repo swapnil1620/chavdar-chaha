@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * {margin: 0; padding: 0; box-sizing: border-box;}
+    html {scroll-behavior: smooth;}
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(-45deg, #fff6e0, #ffe5c2, #fff1d6, #fffaf0);
@@ -20,9 +21,37 @@
       100% {background-position: 0% 50%;}
     }
 
-    /* Header */
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      z-index: 100;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {color: #ff9800;}
+    .nav-logo img {
+      width: 60px; height: 60px; border-radius: 50%;
+    }
+
+    /* Hero Section */
     header {
-      position: relative;
       width: 100%;
       height: 100vh;
       background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
@@ -34,32 +63,12 @@
       text-align: center;
       color: #fff;
       text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      padding-top: 70px;
     }
-
-    /* Fixed logo */
-    .logo {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background-color: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      overflow: hidden;
-      z-index: 100;
-    }
-    .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
     header h1 {
       font-family: 'Pacifico', cursive;
       font-size: 3em;
       color: #ffeb3b;
-      margin-top: 20px;
     }
     header p {
       font-size: 1.4em;
@@ -126,12 +135,23 @@
       cursor: pointer;
       transition: background 0.3s, transform 0.2s;
     }
-    .add-btn:hover {
-      background: #2e7d32;
-      transform: scale(1.05);
+    .add-btn:hover {background: #2e7d32; transform: scale(1.05);}
+
+    /* About Section */
+    #about p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.05em;
+      line-height: 1.6;
+      text-align: center;
+      color: #444;
+      background: #fff8f0;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
-    /* Cart section */
+    /* Cart Section */
     #cart {
       background: #f8f9fa;
       padding: 50px 20px;
@@ -173,13 +193,15 @@
       right: 25px;
       background-color: #25d366;
       color: #FFF;
-      border-radius: 50px;
+      border-radius: 50%;
       text-align: center;
-      font-size: 30px;
+      font-size: 35px;
       box-shadow: 2px 2px 3px #999;
       z-index: 100;
     }
-    .whatsapp-float i {margin-top: 16px;}
+    .whatsapp-float i {
+      margin-top: 12px;
+    }
 
     footer {
       background: #1a1a1a;
@@ -193,58 +215,56 @@
     @media (max-width: 600px) {
       header h1 {font-size: 2.2em;}
       header p {font-size: 1.1em;}
-      .logo {width: 60px; height: 60px;}
+      nav ul {gap: 10px;}
+      .nav-logo img {width: 50px; height: 50px;}
     }
   </style>
 </head>
 <body>
-  <!-- Fixed Logo -->
-  <div class="logo">
-    <img src="https://i.ibb.co/j9dvTy3D/Logo.jpg" alt="Chavdar Chaha Logo">
-  </div>
 
-  <header>
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-logo">
+      <img src="https://i.ibb.co/j9dvTy3D/Logo.jpg" alt="Chavdar Chaha Logo">
+    </div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#cart">Order</a></li>
+      <li><a href="https://wa.me/9623031892?text=Hello%20Chavdar%20Chaha%2C%20I%20have%20an%20enquiry." target="_blank">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home">
     <h1>Chavdar Chaha</h1>
     <p>Chaha cha Badshahh</p>
     <button class="shop-btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'});">Shop Now</button>
   </header>
 
+  <!-- Product Section -->
   <section id="products">
     <h2>Our Products</h2>
     <div class="carousel" id="productCarousel">
-      <div class="product">
-        <img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg" alt="Amruttulya Chaha">
-        <h3>Amruttulya Chaha Premix</h3>
-        <p>₹45 / 125g | ₹280 / 1kg</p>
-        <button class="add-btn" onclick="addToCart('Amruttulya Chaha Premix - ₹45 /125g')">Add to Cart</button>
-      </div>
-      <div class="product">
-        <img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg" alt="Elaichi Chaha">
-        <h3>Elaichi Chaha Premix</h3>
-        <p>₹45 / 125g | ₹280 / 1kg</p>
-        <button class="add-btn" onclick="addToCart('Elaichi Chaha Premix - ₹45 /125g')">Add to Cart</button>
-      </div>
-      <div class="product">
-        <img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg" alt="Ginger Chaha">
-        <h3>Ginger Chaha Premix</h3>
-        <p>₹45 / 125g | ₹280 / 1kg</p>
-        <button class="add-btn" onclick="addToCart('Ginger Chaha Premix - ₹45 /125g')">Add to Cart</button>
-      </div>
-      <div class="product">
-        <img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg" alt="Jaggery Elaichi Chaha">
-        <h3>Jaggery Elaichi Chaha Premix</h3>
-        <p>₹45 / 125g | ₹280 / 1kg</p>
-        <button class="add-btn" onclick="addToCart('Jaggery Elaichi Chaha Premix - ₹45 /125g')">Add to Cart</button>
-      </div>
-      <div class="product">
-        <img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg" alt="Jaggery Sugar Bansundi">
-        <h3>Jaggery Sugar Bansundi Tea Premix</h3>
-        <p>₹45 / 125g | ₹280 / 1kg</p>
-        <button class="add-btn" onclick="addToCart('Jaggery Sugar Bansundi Tea Premix - ₹45 /125g')">Add to Cart</button>
-      </div>
+      <div class="product"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>Amruttulya Chaha Premix</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn" onclick="addToCart('Amruttulya Chaha Premix - ₹45 /125g')">Add to Cart</button></div>
+      <div class="product"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>Elaichi Chaha Premix</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn" onclick="addToCart('Elaichi Chaha Premix - ₹45 /125g')">Add to Cart</button></div>
+      <div class="product"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>Ginger Chaha Premix</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn" onclick="addToCart('Ginger Chaha Premix - ₹45 /125g')">Add to Cart</button></div>
+      <div class="product"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>Jaggery Elaichi Chaha Premix</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn" onclick="addToCart('Jaggery Elaichi Chaha Premix - ₹45 /125g')">Add to Cart</button></div>
+      <div class="product"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>Jaggery Sugar Bansundi Tea Premix</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn" onclick="addToCart('Jaggery Sugar Bansundi Tea Premix - ₹45 /125g')">Add to Cart</button></div>
     </div>
   </section>
 
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Discover the true taste of Amruttulya Tea with our premium Instant Tea Premixes. We offer a complete range of Amruttulya Premix products available in Sugar and Jaggery (Gur) variants — crafted to deliver the authentic Indian chai flavor loved by tea enthusiasts. <br><br>
+    Each blend is made from high-quality tea powder, milk solids, and natural cardamom flavor, giving you café-style tea in seconds. Perfect for homes, offices, cafés, and vending machines.<br><br>
+    Whether you prefer classic sweetness or the earthy richness of jaggery, our Amruttulya Tea Premix ensures consistency, taste, and aroma in every cup.<br><br>
+    Buy our Cardamom Tea Premix, Masala Tea Premix, and Jaggery Tea Premix — and enjoy the real Amruttulya experience anytime, anywhere!</p>
+  </section>
+
+  <!-- Order Section -->
   <section id="cart">
     <h2>Place Your Order</h2>
     <form id="orderForm" onsubmit="sendWhatsApp(event)">
@@ -256,14 +276,17 @@
     </form>
   </section>
 
-  <a href="https://wa.me/9623031892" class="whatsapp-float" target="_blank">
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/9623031892?text=Hello%20Chavdar%20Chaha%2C%20I%20have%20an%20enquiry%20about%20your%20tea%20products." class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
 
+  <!-- Footer -->
   <footer>
     <p>© 2026 Chavdar Chaha | Crafted with ☕ by Swap</p>
   </footer>
 
+  <!-- JS -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script>
     let cart = [];
@@ -292,11 +315,15 @@
         "📞 Phone: " + phone + "%0A" +
         "🏠 Address: " + address + "%0A%0A" +
         "🧾 Order Details:%0A" + items + "%0A%0A" +
-        "Thank you for ordering from *Chavdar Chaha!* ☕"
+        "Thank you for ordering from *Chavdar Chaha!* ☕ %0AOur team will reach out to confirm your order shortly. 🙏"
       );
 
       const whatsappURL = `https://wa.me/9623031892?text=${msg}`;
       window.open(whatsappURL, "_blank");
+
+      setTimeout(() => {
+        alert("✅ Auto-reply: Thank you for your order! We'll confirm shortly on WhatsApp.");
+      }, 2000);
     }
 
     // Auto-scroll carousel
