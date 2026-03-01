@@ -293,16 +293,16 @@
 
     function addToCart(item) {
       cart.push(item);
-      document.getElementById('cartItems').value = cart.join('\\n');
+      document.getElementById('cartItems').value = cart.join('\n');
       alert(item + " added to cart!");
     }
 
     function sendWhatsApp(e) {
       e.preventDefault();
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
-      const address = document.getElementById('address').value;
-      const items = document.getElementById('cartItems').value;
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const items = document.getElementById('cartItems').value.trim();
 
       if (!items) {
         alert("Your cart is empty!");
@@ -319,9 +319,44 @@ Thank you for ordering from Chavdar Chaha! ☕ Our team will confirm your order 
       const whatsappURL = "https://wa.me/9623031892?text=" + encodeURIComponent(msg);
       window.open(whatsappURL, "_blank");
 
+      // Clear form and cart
+      document.getElementById('orderForm').reset();
+      document.getElementById('cartItems').value = "";
+      cart = [];
+
+      // Show animated toast message
+      showToast("✅ Your order has been sent successfully! We'll confirm it shortly on WhatsApp.");
+    }
+
+    function showToast(message) {
+      let toast = document.getElementById('orderToast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'orderToast';
+        toast.style.position = 'fixed';
+        toast.style.bottom = '-80px';
+        toast.style.left = '50%';
+        toast.style.transform = 'translateX(-50%)';
+        toast.style.backgroundColor = '#ff9800'; /* brand color */
+        toast.style.color = '#fff';
+        toast.style.padding = '14px 22px';
+        toast.style.borderRadius = '30px';
+        toast.style.fontSize = '1em';
+        toast.style.fontWeight = '600';
+        toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+        toast.style.transition = 'all 0.6s ease';
+        toast.style.zIndex = '999';
+        document.body.appendChild(toast);
+      }
+
+      toast.innerText = message;
+      toast.style.bottom = '30px'; // slide up
+      toast.style.opacity = '1';
+
       setTimeout(() => {
-        alert("✅ Auto-reply: Thank you for your order! We'll confirm shortly on WhatsApp.");
-      }, 2000);
+        toast.style.bottom = '-80px'; // slide down
+        toast.style.opacity = '0';
+      }, 5000);
     }
 
     // Auto-scroll carousel
