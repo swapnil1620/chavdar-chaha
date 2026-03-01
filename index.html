@@ -232,7 +232,7 @@
       <li><a href="#products">Products</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#cart">Order</a></li>
-      <li><a href="https://wa.me/9623031892?text=Hello%20Chavdar%20Chaha%2C%20I%20have%20an%20enquiry." target="_blank">Contact</a></li>
+      <li><a href="https://wa.me/9623031892?text=Hello Chavdar Chaha, I have an enquiry about your tea products." target="_blank">Contact</a></li>
     </ul>
   </nav>
 
@@ -258,9 +258,9 @@
   <!-- About Section -->
   <section id="about">
     <h2>About Us</h2>
-    <p>Discover the true taste of Amruttulya Tea with our premium Instant Tea Premixes. We offer a complete range of Amruttulya Premix products available in Sugar and Jaggery (Gur) variants — crafted to deliver the authentic Indian chai flavor loved by tea enthusiasts. <br><br>
-    Each blend is made from high-quality tea powder, milk solids, and natural cardamom flavor, giving you café-style tea in seconds. Perfect for homes, offices, cafés, and vending machines.<br><br>
-    Whether you prefer classic sweetness or the earthy richness of jaggery, our Amruttulya Tea Premix ensures consistency, taste, and aroma in every cup.<br><br>
+    <p>Discover the true taste of Amruttulya Tea with our premium Instant Tea Premixes. We offer a complete range of Amruttulya Premix products available in Sugar and Jaggery (Gur) variants — crafted to deliver the authentic Indian chai flavor loved by tea enthusiasts.
+    Each blend is made from high-quality tea powder, milk solids, and natural cardamom flavor, giving you café-style tea in seconds. Perfect for homes, offices, cafés, and vending machines.
+    Whether you prefer classic sweetness or the earthy richness of jaggery, our Amruttulya Tea Premix ensures consistency, taste, and aroma in every cup.
     Buy our Cardamom Tea Premix, Masala Tea Premix, and Jaggery Tea Premix — and enjoy the real Amruttulya experience anytime, anywhere!</p>
   </section>
 
@@ -277,7 +277,7 @@
   </section>
 
   <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/9623031892?text=Hello%20Chavdar%20Chaha%2C%20I%20have%20an%20enquiry%20about%20your%20tea%20products." class="whatsapp-float" target="_blank">
+  <a href="https://wa.me/9623031892?text=Hello Chavdar Chaha, I have an enquiry about your tea products." class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -309,16 +309,14 @@
         return;
       }
 
-      const msg = encodeURIComponent(
-        "🛍️ *New Order - Chavdar Chaha* %0A%0A" +
-        "👤 Name: " + name + "%0A" +
-        "📞 Phone: " + phone + "%0A" +
-        "🏠 Address: " + address + "%0A%0A" +
-        "🧾 Order Details:%0A" + items + "%0A%0A" +
-        "Thank you for ordering from *Chavdar Chaha!* ☕ %0AOur team will reach out to confirm your order shortly. 🙏"
-      );
+      const msg = `🛍️ New Order - Chavdar Chaha 
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+Order Details: ${items}
+Thank you for ordering from Chavdar Chaha! ☕ Our team will confirm your order shortly. 🙏`;
 
-      const whatsappURL = `https://wa.me/9623031892?text=${msg}`;
+      const whatsappURL = "https://wa.me/9623031892?text=" + encodeURIComponent(msg);
       window.open(whatsappURL, "_blank");
 
       setTimeout(() => {
