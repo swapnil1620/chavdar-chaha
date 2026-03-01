@@ -324,7 +324,7 @@ Thank you for ordering from Chavdar Chaha! ☕ Our team will confirm your order 
       document.getElementById('cartItems').value = "";
       cart = [];
 
-      // Show animated toast message
+      // Show animated toast message with ding sound
       showToast("✅ Your order has been sent successfully! We'll confirm it shortly on WhatsApp.");
     }
 
@@ -337,7 +337,7 @@ Thank you for ordering from Chavdar Chaha! ☕ Our team will confirm your order 
         toast.style.bottom = '-80px';
         toast.style.left = '50%';
         toast.style.transform = 'translateX(-50%)';
-        toast.style.backgroundColor = '#ff9800'; /* brand color */
+        toast.style.backgroundColor = '#ff9800';
         toast.style.color = '#fff';
         toast.style.padding = '14px 22px';
         toast.style.borderRadius = '30px';
@@ -350,11 +350,15 @@ Thank you for ordering from Chavdar Chaha! ☕ Our team will confirm your order 
       }
 
       toast.innerText = message;
-      toast.style.bottom = '30px'; // slide up
+      toast.style.bottom = '30px'; 
       toast.style.opacity = '1';
 
+      // Play a soft ding sound
+      const ding = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_3b27b13b9d.mp3?filename=interface-124464.mp3');
+      ding.play();
+
       setTimeout(() => {
-        toast.style.bottom = '-80px'; // slide down
+        toast.style.bottom = '-80px';
         toast.style.opacity = '0';
       }, 5000);
     }
