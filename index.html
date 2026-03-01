@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chavdar Chaha - Chaha cha Badshahh</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;}
+    body {background: #fff; color: #333; overflow-x: hidden;}
+
+    header {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url('https://i.ibb.co/5X9nwBv1/3843753.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+    }
+
+    header h1 {font-size: 3em; text-shadow: 2px 2px 6px rgba(0,0,0,0.5);}
+    header p {font-size: 1.5em; margin-top: 10px; text-shadow: 1px 1px 5px rgba(0,0,0,0.4);}
+    .shop-btn {
+      margin-top: 20px;
+      background: #e63946;
+      color: #fff;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: background 0.3s;
+    }
+    .shop-btn:hover {background: #c71f2d;}
+
+    section {padding: 60px 20px;}
+    h2 {text-align: center; font-size: 2em; margin-bottom: 30px; color: #333;}
+
+    /* Product carousel */
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 20px;
+      padding-bottom: 10px;
+    }
+    .carousel::-webkit-scrollbar {display: none;}
+    .product {
+      min-width: 250px;
+      background: #fafafa;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+      text-align: center;
+      padding: 15px;
+      transition: transform 0.3s;
+    }
+    .product:hover {transform: translateY(-5px);}
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .product h3 {margin-top: 10px; font-size: 1.2em;}
+    .product p {color: #555;}
+    .add-btn {
+      margin-top: 10px;
+      background: #06d6a0;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .add-btn:hover {background: #04b383;}
+
+    /* Cart section */
+    #cart {
+      background: #f8f9fa;
+      padding: 40px 20px;
+      border-top: 1px solid #ddd;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button[type="submit"] {
+      background: #457b9d;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button[type="submit"]:hover {background: #1d3557;}
+
+    /* WhatsApp button */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: #FFF;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 3px #999;
+      z-index: 100;
+    }
+    .whatsapp-float i {
+      margin-top: 16px;
+    }
+
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {font-size: 2em;}
+      header p {font-size: 1.2em;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chavdar Chaha</h1>
+    <p>Chaha cha Badshahh</p>
+    <button class="shop-btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'});">Shop Now</button>
+  </header>
+
+  <section id="products">
+    <h2>Our Products</h2>
+    <div class="carousel" id="productCarousel">
+      <div class="product">
+        <img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg" alt="Amruttulya Chaha">
+        <h3>Amruttulya Chaha Premix</h3>
+        <p>₹125 / 125g</p>
+        <button class="add-btn" onclick="addToCart('Amruttulya Chaha Premix - ₹125')">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="cart">
+    <h2>Order Your Chaha</h2>
+    <form id="orderForm" onsubmit="sendEmail(event)">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="tel" id="phone" placeholder="Phone Number" required>
+      <textarea id="cartItems" rows="4" readonly placeholder="Your selected items..."></textarea>
+      <button type="submit">Place Order via Email</button>
+    </form>
+  </section>
+
+  <a href="https://wa.me/9623031892" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <footer>
+    <p>© 2026 Chavdar Chaha | Crafted with ❤️ by Swap</p>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+    let cart = [];
+
+    function addToCart(item) {
+      cart.push(item);
+      document.getElementById('cartItems').value = cart.join('\\n');
+      alert(item + " added to cart!");
+    }
+
+    function sendEmail(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const items = document.getElementById('cartItems').value;
+
+      if (!items) {
+        alert("Your cart is empty!");
+        return;
+      }
+
+      const subject = encodeURIComponent("New Order from " + name);
+      const body = encodeURIComponent(
+        "Customer Name: " + name + "\\n" +
+        "Phone: " + phone + "\\n" +
+        "Order Details:\\n" + items
+      );
+
+      window.location.href = `mailto:erswapnil16@gmail.com?subject=${subject}&body=${body}`;
+    }
+
+    // Auto scroll carousel
+    const carousel = document.getElementById('productCarousel');
+    let scrollPos = 0;
+    setInterval(() => {
+      scrollPos += 1;
+      if (scrollPos >= carousel.scrollWidth - carousel.clientWidth) scrollPos = 0;
+      carousel.scrollLeft = scrollPos;
+    }, 50);
+  </script>
+</body>
+</html>
