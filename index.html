@@ -4,14 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chavdar Chaha - Chaha cha Badshahh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;}
+    * {margin: 0; padding: 0; box-sizing: border-box;}
     body {
-      color: #333;
-      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
       background: linear-gradient(-45deg, #fff6e0, #ffe5c2, #fff1d6, #fffaf0);
       background-size: 400% 400%;
       animation: bgMove 10s ease infinite;
+      overflow-x: hidden;
     }
     @keyframes bgMove {
       0% {background-position: 0% 50%;}
@@ -19,28 +20,50 @@
       100% {background-position: 0% 50%;}
     }
 
+    /* Header */
     header {
       position: relative;
       width: 100%;
       height: 100vh;
-      background: url('https://i.ibb.co/5X9nwBv1/3843753.jpg') center/cover no-repeat;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
       text-align: center;
-      color: #fff;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+      color: #333;
+    }
+
+    /* Fixed logo on top-left */
+    .logo {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      overflow: hidden;
+      z-index: 100;
+    }
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     header h1 {
+      font-family: 'Pacifico', cursive;
       font-size: 3em;
-      color: #ffeb3b;
+      color: #ff9800;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      margin-top: 40px;
     }
     header p {
       font-size: 1.4em;
-      color: #fff;
+      color: #333;
       margin-top: 10px;
+      font-weight: 600;
     }
     .shop-btn {
       margin-top: 25px;
@@ -139,7 +162,7 @@
     }
     button[type="submit"]:hover {background: #1ebe57;}
 
-    /* WhatsApp button */
+    /* WhatsApp floating */
     .whatsapp-float {
       position: fixed;
       width: 60px;
@@ -170,10 +193,16 @@
     @media (max-width: 600px) {
       header h1 {font-size: 2.2em;}
       header p {font-size: 1.1em;}
+      .logo {width: 60px; height: 60px;}
     }
   </style>
 </head>
 <body>
+  <!-- Fixed Logo -->
+  <div class="logo">
+    <img src="https://i.ibb.co/j9dvTy3D/Logo.jpg" alt="Chavdar Chaha Logo">
+  </div>
+
   <header>
     <h1>Chavdar Chaha</h1>
     <p>Chaha cha Badshahh</p>
@@ -187,8 +216,31 @@
         <img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg" alt="Amruttulya Chaha">
         <h3>Amruttulya Chaha Premix</h3>
         <p>₹45 / 125g | ₹280 / 1kg</p>
-        <small>(Wholesale rates available)</small><br>
         <button class="add-btn" onclick="addToCart('Amruttulya Chaha Premix - ₹45 /125g')">Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg" alt="Elaichi Chaha">
+        <h3>Elaichi Chaha Premix</h3>
+        <p>₹45 / 125g | ₹280 / 1kg</p>
+        <button class="add-btn" onclick="addToCart('Elaichi Chaha Premix - ₹45 /125g')">Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg" alt="Ginger Chaha">
+        <h3>Ginger Chaha Premix</h3>
+        <p>₹45 / 125g | ₹280 / 1kg</p>
+        <button class="add-btn" onclick="addToCart('Ginger Chaha Premix - ₹45 /125g')">Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg" alt="Jaggery Elaichi Chaha">
+        <h3>Jaggery Elaichi Chaha Premix</h3>
+        <p>₹45 / 125g | ₹280 / 1kg</p>
+        <button class="add-btn" onclick="addToCart('Jaggery Elaichi Chaha Premix - ₹45 /125g')">Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg" alt="Jaggery Sugar Bansundi">
+        <h3>Jaggery Sugar Bansundi Tea Premix</h3>
+        <p>₹45 / 125g | ₹280 / 1kg</p>
+        <button class="add-btn" onclick="addToCart('Jaggery Sugar Bansundi Tea Premix - ₹45 /125g')">Add to Cart</button>
       </div>
     </div>
   </section>
@@ -196,8 +248,9 @@
   <section id="cart">
     <h2>Place Your Order</h2>
     <form id="orderForm" onsubmit="sendWhatsApp(event)">
-      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="text" id="name" placeholder="Your Full Name" required>
       <input type="tel" id="phone" placeholder="Phone Number" required>
+      <textarea id="address" rows="2" placeholder="Full Delivery Address" required></textarea>
       <textarea id="cartItems" rows="4" readonly placeholder="Your selected items..."></textarea>
       <button type="submit">Place Order via WhatsApp</button>
     </form>
@@ -225,6 +278,7 @@
       e.preventDefault();
       const name = document.getElementById('name').value;
       const phone = document.getElementById('phone').value;
+      const address = document.getElementById('address').value;
       const items = document.getElementById('cartItems').value;
 
       if (!items) {
@@ -233,17 +287,19 @@
       }
 
       const msg = encodeURIComponent(
-        "New Order from Chavdar Chaha%0A%0A" +
-        "Customer Name: " + name + "%0A" +
-        "Phone: " + phone + "%0A%0A" +
-        "Order Details:%0A" + items + "%0A%0AThank you for choosing Chavdar Chaha!"
+        "🛍️ *New Order - Chavdar Chaha* %0A%0A" +
+        "👤 Name: " + name + "%0A" +
+        "📞 Phone: " + phone + "%0A" +
+        "🏠 Address: " + address + "%0A%0A" +
+        "🧾 Order Details:%0A" + items + "%0A%0A" +
+        "Thank you for ordering from *Chavdar Chaha!* ☕"
       );
 
       const whatsappURL = `https://wa.me/9623031892?text=${msg}`;
       window.open(whatsappURL, "_blank");
     }
 
-    // Auto scroll carousel
+    // Auto-scroll carousel
     const carousel = document.getElementById('productCarousel');
     let scrollPos = 0;
     setInterval(() => {
