@@ -1,367 +1,337 @@
 <!DOCTYPE html>
-
-<html lang="mr">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>चवदार चहा — चहा चा बादशहा</title>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chavdar Chaha - Chaha cha Badshahh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root{--accent:#ff9800;--green:#25d366;--card:#ffffffcc;--text:#222;}
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:'Poppins',sans-serif;background:linear-gradient(-45deg,#fff6e0,#ffe5c2,#fff1d6,#fffaf0);background-size:400% 400%;animation:bgMove 10s ease infinite;color:var(--text);overflow-x:hidden;padding-top:72px;}
-    @keyframes bgMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-    nav{position:fixed;top:0;left:0;right:0;height:72px;background:rgba(255,255,255,0.98);display:flex;align-items:center;justify-content:space-between;padding:8px 16px;box-shadow:0 2px 10px rgba(0,0,0,0.08);z-index:120;}
-    .nav-left{display:flex;align-items:center;gap:12px}
-    .nav-logo{width:56px;height:56px;border-radius:50%;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.12)}
-    .nav-logo img{width:100%;height:100%;object-fit:cover}
-    .nav-title{font-family:'Baloo 2',cursive;font-size:1.05rem;color:var(--accent);margin-left:4px}
-    .lang-toggle{border:1px solid #eee;padding:6px 10px;border-radius:20px;cursor:pointer;background:#fff;font-weight:600}
-    header{height:86vh;min-height:420px;background:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://i.ibb.co/7Jvp3K9F/soothing-cinnamon-drink-casting-cozy-light-table.jpg')center/cover no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:20px;}
-    header h1{font-family:'Baloo 2',cursive;font-size:3rem;color:#ffeb3b}
-    header p{font-size:1.1rem;margin-top:8px;font-weight:600}
-    .shop-btn{margin-top:18px;background:var(--accent);color:#fff;border:none;padding:12px 28px;border-radius:40px;font-weight:700;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,0.2)}
-    section{padding:56px 18px}
-    h2{text-align:center;margin-bottom:20px;font-size:1.6rem}
-    .carousel{display:flex;gap:18px;overflow-x:auto;padding:12px 6px;scroll-behavior:smooth}
-    .carousel::-webkit-scrollbar{display:none}
-    .product{min-width:240px;background:var(--card);border-radius:12px;padding:12px;box-shadow:0 6px 16px rgba(0,0,0,0.08);text-align:center;flex-shrink:0}
-    .product img{width:100%;height:160px;object-fit:cover;border-radius:8px}
-    .product h3{margin-top:10px;font-size:1.02rem}
-    .add-btn{margin-top:6px;background:#43a047;color:#fff;border:none;padding:8px 18px;border-radius:999px;cursor:pointer;font-weight:700}
-    #cart{background:#f8f9fa;border-top:1px solid #eee;padding-bottom:80px}
-    form{max-width:560px;margin:auto;display:flex;flex-direction:column;gap:10px}
-    input,textarea{padding:10px;border-radius:8px;border:1px solid #ccc;background:#fff}
-    button[type=submit]{background:var(--green);color:#fff;border:none;padding:12px;border-radius:999px;font-weight:700;cursor:pointer}
-    .float-wrap{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:12px;z-index:130}
-    .float-btn{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,0.12);cursor:pointer;text-decoration:none}
-    .whatsapp{background:var(--green)}.call{background:#2e7d32;color:#fff;flex-direction:column;padding:6px 10px}
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    html {scroll-behavior: smooth;}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(-45deg, #fff6e0, #ffe5c2, #fff1d6, #fffaf0);
+      background-size: 400% 400%;
+      animation: bgMove 10s ease infinite;
+      overflow-x: hidden;
+    }
+    @keyframes bgMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      z-index: 100;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {color: #ff9800;}
+    .nav-logo img {
+      width: 60px; height: 60px; border-radius: 50%;
+    }
+
+    /* Hero Section */
+    header {
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('https://i.ibb.co/7Jvp3K9F/soothing-cinnamon-drink-casting-cozy-light-table.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      padding-top: 70px;
+    }
+    header h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3em;
+      color: #ffeb3b;
+    }
+    header p {
+      font-size: 1.4em;
+      color: #fff;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+    .shop-btn {
+      margin-top: 25px;
+      background: #ff9800;
+      color: #fff;
+      border: none;
+      padding: 15px 35px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1.1em;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .shop-btn:hover {
+      background: #e68900;
+      transform: scale(1.05);
+    }
+
+    section {padding: 60px 20px;}
+    h2 {text-align: center; font-size: 2.2em; margin-bottom: 30px; color: #2e2e2e;}
+
+    /* Product carousel */
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 20px;
+      padding-bottom: 10px;
+    }
+    .carousel::-webkit-scrollbar {display: none;}
+    .product {
+      min-width: 260px;
+      background: #ffffffcc;
+      border-radius: 15px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+      text-align: center;
+      padding: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .product:hover {transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2);}
+    .product img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .product h3 {margin-top: 10px; font-size: 1.2em; color: #222;}
+    .product p {color: #555;}
+    .add-btn {
+      margin-top: 10px;
+      background: #43a047;
+      color: #fff;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .add-btn:hover {background: #2e7d32; transform: scale(1.05);}
+
+    /* About Section */
+    #about p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.05em;
+      line-height: 1.6;
+      text-align: center;
+      color: #444;
+      background: #fff8f0;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Cart Section */
+    #cart {
+      background: #f8f9fa;
+      padding: 50px 20px;
+      border-top: 1px solid #ddd;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background: #fff;
+    }
+    button[type="submit"] {
+      background: #25d366;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 30px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    button[type="submit"]:hover {background: #1ebe57;}
+
+    /* WhatsApp floating */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: #FFF;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 35px;
+      box-shadow: 2px 2px 3px #999;
+      z-index: 100;
+    }
+    .whatsapp-float i {
+      margin-top: 12px;
+    }
+
+    footer {
+      background: #1a1a1a;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 30px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {font-size: 2.2em;}
+      header p {font-size: 1.1em;}
+      nav ul {gap: 10px;}
+      .nav-logo img {width: 50px; height: 50px;}
+    }
   </style>
 </head>
 <body>
+
+  <!-- Navbar -->
   <nav>
-    <div class="nav-left"><div class="nav-logo"><img src="https://i.ibb.co/j9dvTy3D/Logo.jpg" alt="logo"></div><div class="nav-title" id="shopTitle">चवदार चहा</div></div>
-    <div><div class="lang-toggle" id="langToggle">English</div></div>
+    <div class="nav-logo">
+      <img src="https://i.ibb.co/j9dvTy3D/Logo.jpg" alt="Chavdar Chaha Logo">
+    </div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#cart">Order</a></li>
+      <li><a href="https://wa.me/9623031892?text=Hello Chavdar Chaha, I have an enquiry about your tea products." target="_blank">Contact</a></li>
+    </ul>
   </nav>
 
+  <!-- Hero Section -->
   <header id="home">
-    <h1 id="heroTitle">चवदार चहा</h1>
-    <p id="heroTag">चहा चा बादशहा</p>
-    <button class="shop-btn" id="shopNow">आता खरेदी करा</button>
+    <h1>Chavdar Chaha</h1>
+    <p>Chaha cha Badshahh</p>
+    <button class="shop-btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'});">Shop Now</button>
   </header>
 
+  <!-- Product Section -->
   <section id="products">
-    <h2 id="prodTitle">आमची उत्पादने</h2>
+    <h2>Our Products</h2>
     <div class="carousel" id="productCarousel">
-      <div class="product" data-en="Amruttulya Chaha Premix" data-mr="अमृततुल्य चहा प्रीमिक्स"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3 class="pname">अमृततुल्य चहा प्रीमिक्स</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn">कार्टमध्ये टाका</button></div>
-      <div class="product" data-en="Elaichi Chaha Premix" data-mr="इलायची चहा प्रीमिक्स"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3 class="pname">इलायची चहा प्रीमिक्स</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn">कार्टमध्ये टाका</button></div>
-      <div class="product" data-en="Ginger Chaha Premix" data-mr="आले चहा प्रीमिक्स"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3 class="pname">आले चहा प्रीमिक्स</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn">कार्टमध्ये टाका</button></div>
-      <div class="product" data-en="Jaggery Elaichi Chaha Premix" data-mr="गूळ इलायची चहा प्रीमिक्स"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3 class="pname">गूळ इलायची चहा प्रीमिक्स</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn">कार्टमध्ये टाका</button></div>
-      <div class="product" data-en="Jaggery Sugar Bansundi Tea Premix" data-mr="गूळ/साखर बंसुंदी चहा प्रीमिक्स"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3 class="pname">गूळ/साखर बंसुंदी चहा प्रीमिक्स</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn">कार्टमध्ये टाका</button></div>
+      <div class="product"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>Amruttulya Chaha Premix</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn" onclick="addToCart('Amruttulya Chaha Premix - ₹45 /125g')">Add to Cart</button></div>
+      <div class="product"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>Elaichi Chaha Premix</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn" onclick="addToCart('Elaichi Chaha Premix - ₹45 /125g')">Add to Cart</button></div>
+      <div class="product"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>Ginger Chaha Premix</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn" onclick="addToCart('Ginger Chaha Premix - ₹45 /125g')">Add to Cart</button></div>
+      <div class="product"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>Jaggery Elaichi Chaha Premix</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn" onclick="addToCart('Jaggery Elaichi Chaha Premix - ₹45 /125g')">Add to Cart</button></div>
+      <div class="product"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>Jaggery Sugar Bansundi Tea Premix</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn" onclick="addToCart('Jaggery Sugar Bansundi Tea Premix - ₹45 /125g')">Add to Cart</button></div>
     </div>
   </section>
 
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Discover the true taste of Amruttulya Tea with our premium Instant Tea Premixes. We offer a complete range of Amruttulya Premix products available in Sugar and Jaggery (Gur) variants — crafted to deliver the authentic Indian chai flavor loved by tea enthusiasts.
+    Each blend is made from high-quality tea powder, milk solids, and natural cardamom flavor, giving you café-style tea in seconds. Perfect for homes, offices, cafés, and vending machines.
+    Whether you prefer classic sweetness or the earthy richness of jaggery, our Amruttulya Tea Premix ensures consistency, taste, and aroma in every cup.
+    Buy our Cardamom Tea Premix, Masala Tea Premix, and Jaggery Tea Premix — and enjoy the real Amruttulya experience anytime, anywhere!</p>
+  </section>
+
+  <!-- Order Section -->
   <section id="cart">
-    <h2 id="orderTitle">ऑर्डर करा</h2>
-    <form id="orderForm">
-      <input id="name" type="text" placeholder="पूर्ण नाव" required>
-      <input id="phone" type="tel" placeholder="फोन नंबर" required>
-      <textarea id="address" placeholder="पूर्ण पत्ता (विलीव)" required></textarea>
-      <textarea id="cartItems" readonly placeholder="आपली निवड येथे दिसेल..."></textarea>
-      <button type="submit" id="sendBtn">WhatsApp वर पाठवा</button>
+    <h2>Place Your Order</h2>
+    <form id="orderForm" onsubmit="sendWhatsApp(event)">
+      <input type="text" id="name" placeholder="Your Full Name" required>
+      <input type="tel" id="phone" placeholder="Phone Number" required>
+      <textarea id="address" rows="2" placeholder="Full Delivery Address" required></textarea>
+      <textarea id="cartItems" rows="4" readonly placeholder="Your selected items..."></textarea>
+      <button type="submit">Place Order via WhatsApp</button>
     </form>
   </section>
 
-  <div class="float-wrap">
-    <a class="float-btn whatsapp" id="waBtn" target="_blank" href="https://wa.me/9623031892">🟢</a>
-    <a class="float-btn call" href="tel:9623031892">📞</a>
-  </div>
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/9623031892?text=Hello Chavdar Chaha, I have an enquiry about your tea products." class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Chavdar Chaha | Crafted with ☕ by Swap</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script>
-  let cart=[];const wa='9623031892';let lang='mr';
+    let cart = [];
 
-  const texts={
-    mr:{title:'चवदार चहा',tag:'चहा चा बादशहा',btn:'आता खरेदी करा',prodTitle:'आमची उत्पादने',order:'ऑर्डर करा',phName:'पूर्ण नाव',phPhone:'फोन नंबर',phAddr:'पूर्ण पत्ता (विलीव)',phCart:'आपली निवड येथे दिसेल...',send:'WhatsApp वर पाठवा',add:'कार्टमध्ये टाका'},
-    en:{title:'Chavdar Chaha',tag:'Chaha cha Badshahh',btn:'Shop Now',prodTitle:'Our Products',order:'Place Your Order',phName:'Full Name',phPhone:'Phone Number',phAddr:'Full Delivery Address',phCart:'Your selections will appear here...',send:'Send via WhatsApp',add:'Add to Cart'}
-  };
+    function addToCart(item) {
+      cart.push(item);
+      document.getElementById('cartItems').value = cart.join('\\n');
+      alert(item + " added to cart!");
+    }
 
-  document.getElementById('langToggle').addEventListener('click',()=>{
-    lang=lang==='mr'?'en':'mr';const t=texts[lang];
-    document.getElementById('shopTitle').textContent=t.title;
-    document.getElementById('heroTitle').textContent=t.title;
-    document.getElementById('heroTag').textContent=t.tag;
-    document.getElementById('shopNow').textContent=t.btn;
-    document.getElementById('prodTitle').textContent=t.prodTitle;
-    document.getElementById('orderTitle').textContent=t.order;
-    document.getElementById('name').placeholder=t.phName;
-    document.getElementById('phone').placeholder=t.phPhone;
-    document.getElementById('address').placeholder=t.phAddr;
-    document.getElementById('cartItems').placeholder=t.phCart;
-    document.getElementById('sendBtn').textContent=t.send;
-    document.querySelectorAll('.add-btn').forEach(b=>b.textContent=t.add);
-    document.getElementById('langToggle').textContent=lang==='mr'?'English':'मराठी';
-    document.querySelectorAll('.product').forEach(p=>p.querySelector('.pname').textContent=p.getAttribute(`data-${lang}`));
-  });
+    function sendWhatsApp(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const address = document.getElementById('address').value;
+      const items = document.getElementById('cartItems').value;
 
-  document.querySelectorAll('.add-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const prod=btn.parentElement.querySelector('.pname').textContent;
-      if(!cart.includes(prod))cart.push(prod);
-      document.getElementById('cartItems').value=cart.join('
-');
-      alert(prod+(lang==='mr'?' कार्टमध्ये टाकले':' added to cart'));
-    });
-  });
+      if (!items) {
+        alert("Your cart is empty!");
+        return;
+      }
 
-  document.getElementById('orderForm').addEventListener('submit',function(e){
-    e.preventDefault();
-    if(!cart.length){alert(lang==='mr'?'आपले कार्ट रिकामे आहे!':'Your cart is empty!');return;}
-    const name=document.getElementById('name').value.trim();
-    const ph=document.getElementById('phone').value.trim();
-    const ad=document.getElementById('address').value.trim();
-    const msg=lang==='mr'?`🛍️ नवीन ऑर्डर - चवदार चहा
-नाव: ${name}
-फोन: ${ph}
-पत्ता: ${ad}
-ऑर्डर तपशील:
-${cart.join('
-')}
-
-धन्यवाद! आपल्या ऑर्डरबद्दल आमचा प्रतिनिधी लवकरच संपर्क करेल.`:`🛍️ New Order - Chavdar Chaha
+      const msg = `🛍️ New Order - Chavdar Chaha 
 Name: ${name}
-Phone: ${ph}
-Address: ${ad}
-Order Details:
-${cart.join('
-')}
+Phone: ${phone}
+Address: ${address}
+Order Details: ${items}
+Thank you for ordering from Chavdar Chaha! ☕ Our team will confirm your order shortly. 🙏`;
 
-Thank you! Our team will contact you soon.`;
-    window.open('https://wa.me/'+wa+'?text='+encodeURIComponent(msg),'_blank');
-    alert(lang==='mr'?'✅ ऑर्डर पाठवली गेली! धन्यवाद.':'✅ Order sent successfully!');
-    this.reset();cart=[];document.getElementById('cartItems').value='';
-    document.getElementById('home').scrollIntoView({behavior:'smooth'});
-  });
+      const whatsappURL = "https://wa.me/9623031892?text=" + encodeURIComponent(msg);
+      window.open(whatsappURL, "_blank");
+
+      setTimeout(() => {
+        alert("✅ Auto-reply: Thank you for your order! We'll confirm shortly on WhatsApp.");
+      }, 2000);
+    }
+
+    // Auto-scroll carousel
+    const carousel = document.getElementById('productCarousel');
+    let scrollPos = 0;
+    setInterval(() => {
+      scrollPos += 1;
+      if (scrollPos >= carousel.scrollWidth - carousel.clientWidth) scrollPos = 0;
+      carousel.scrollLeft = scrollPos;
+    }, 50);
   </script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="mr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>चवदार चहा — चहा चा बादशहा</title>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    :root{--accent:#ff9800;--green:#25d366;--card:#ffffffcc;--text:#222;}
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:'Poppins',sans-serif;background:linear-gradient(-45deg,#fff6e0,#ffe5c2,#fff1d6,#fffaf0);background-size:400% 400%;animation:bgMove 10s ease infinite;color:var(--text);overflow-x:hidden;padding-top:72px;}
-    @keyframes bgMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-    nav{position:fixed;top:0;left:0;right:0;height:72px;background:rgba(255,255,255,0.98);display:flex;align-items:center;justify-content:space-between;padding:8px 16px;box-shadow:0 2px 10px rgba(0,0,0,0.08);z-index:120;}
-    .nav-left{display:flex;align-items:center;gap:12px}
-    .nav-logo{width:56px;height:56px;border-radius:50%;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.12)}
-    .nav-logo img{width:100%;height:100%;object-fit:cover}
-    .nav-title{font-family:'Baloo 2',cursive;font-size:1.05rem;color:var(--accent);margin-left:4px}
-    .lang-toggle{border:1px solid #eee;padding:6px 10px;border-radius:20px;cursor:pointer;background:#fff;font-weight:600}
-    header{height:86vh;min-height:420px;background:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://i.ibb.co/7Jvp3K9F/soothing-cinnamon-drink-casting-cozy-light-table.jpg')center/cover no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:20px;}
-    header h1{font-family:'Baloo 2',cursive;font-size:3rem;color:#ffeb3b}
-    header p{font-size:1.1rem;margin-top:8px;font-weight:600}
-    .shop-btn{margin-top:18px;background:var(--accent);color:#fff;border:none;padding:12px 28px;border-radius:40px;font-weight:700;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,0.2)}
-    section{padding:56px 18px}
-    h2{text-align:center;margin-bottom:20px;font-size:1.6rem}
-    .carousel{display:flex;gap:18px;overflow-x:auto;padding:12px 6px;scroll-behavior:smooth}
-    .carousel::-webkit-scrollbar{display:none}
-    .product{min-width:240px;background:var(--card);border-radius:12px;padding:12px;box-shadow:0 6px 16px rgba(0,0,0,0.08);text-align:center;flex-shrink:0}
-    .product img{width:100%;height:160px;object-fit:cover;border-radius:8px}
-    .product h3{margin-top:10px;font-size:1.02rem}
-    .add-btn{margin-top:6px;background:#43a047;color:#fff;border:none;padding:8px 18px;border-radius:999px;cursor:pointer;font-weight:700}
-    #cart{background:#f8f9fa;border-top:1px solid #eee;padding-bottom:80px}
-    form{max-width:560px;margin:auto;display:flex;flex-direction:column;gap:10px}
-    input,textarea{padding:10px;border-radius:8px;border:1px solid #ccc;background:#fff}
-    button[type=submit]{background:var(--green);color:#fff;border:none;padding:12px;border-radius:999px;font-weight:700;cursor:pointer}
-    .float-wrap{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:12px;z-index:130}
-    .float-btn{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,0.12);cursor:pointer;text-decoration:none}
-    .whatsapp{background:var(--green)}.call{background:#2e7d32;color:#fff;flex-direction:column;padding:6px 10px}
-  </style>
-</head>
-<body>
-  <nav>
-    <div class="nav-left"><div class="nav-logo"><img src="https://i.ibb.co/j9dvTy3D/Logo.jpg" alt="logo"></div><div class="nav-title">चवदार चहा</div></div>
-    <div><div class="lang-toggle" id="langToggle">English</div></div>
-  </nav>
-
-  <header id="home">
-    <h1 id="heroTitle">चवदार चहा</h1>
-    <p id="heroTag">चहा चा बादशहा</p>
-    <button class="shop-btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">आता खरेदी करा</button>
-  </header>
-
-  <section id="products">
-    <h2 id="prodTitle">आमची उत्पादने</h2>
-    <div class="carousel" id="productCarousel">
-      <div class="product" data-prod="अमृततुल्य चहा प्रीमिक्स"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>अमृततुल्य चहा प्रीमिक्स</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn">कार्टमध्ये टाका</button></div>
-      <div class="product" data-prod="इलायची चहा प्रीमिक्स"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>इलायची चहा प्रीमिक्स</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn">कार्टमध्ये टाका</button></div>
-      <div class="product" data-prod="आले चहा प्रीमिक्स"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>आले चहा प्रीमिक्स</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn">कार्टमध्ये टाका</button></div>
-      <div class="product" data-prod="गूळ इलायची चहा प्रीमिक्स"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>गूळ इलायची चहा प्रीमिक्स</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn">कार्टमध्ये टाका</button></div>
-      <div class="product" data-prod="गूळ/साखर बंसुंदी चहा प्रीमिक्स"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>गूळ/साखर बंसुंदी चहा प्रीमिक्स</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn">कार्टमध्ये टाका</button></div>
-    </div>
-  </section>
-
-  <section id="cart">
-    <h2>ऑर्डर करा</h2>
-    <form id="orderForm">
-      <input id="name" type="text" placeholder="पूर्ण नाव" required>
-      <input id="phone" type="tel" placeholder="फोन नंबर" required>
-      <textarea id="address" placeholder="पूर्ण पत्ता (विलीव)" required></textarea>
-      <textarea id="cartItems" readonly placeholder="आपली निवड येथे दिसेल..."></textarea>
-      <button type="submit">WhatsApp वर पाठवा</button>
-    </form>
-  </section>
-
-  <div class="float-wrap">
-    <a class="float-btn whatsapp" id="waBtn" target="_blank" href="https://wa.me/9623031892">🟢</a>
-    <a class="float-btn call" href="tel:9623031892">📞</a>
-  </div>
-
-  <script>
-  let cart=[];const wa='9623031892';
-  document.querySelectorAll('.add-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const prod=btn.parentElement.getAttribute('data-prod');
-      if(!cart.includes(prod))cart.push(prod);
-      document.getElementById('cartItems').value=cart.join('
-');
-      alert(prod+' कार्टमध्ये टाकले');
-    });
-  });
-
-  document.getElementById('orderForm').addEventListener('submit',function(e){
-    e.preventDefault();
-    if(!cart.length){alert('आपले कार्ट रिकामे आहे!');return;}
-    const name=document.getElementById('name').value.trim();
-    const ph=document.getElementById('phone').value.trim();
-    const ad=document.getElementById('address').value.trim();
-    const msg=`🛍️ नवीन ऑर्डर - चवदार चहा
-नाव: ${name}
-फोन: ${ph}
-पत्ता: ${ad}
-ऑर्डर तपशील:
-${cart.join('
-')}
-
-धन्यवाद! आपल्या ऑर्डरबद्दल आमचा प्रतिनिधी लवकरच संपर्क करेल.`;
-    window.open('https://wa.me/'+wa+'?text='+encodeURIComponent(msg),'_blank');
-    alert('✅ ऑर्डर पाठवली गेली! धन्यवाद.');
-    this.reset();cart=[];document.getElementById('cartItems').value='';
-    document.getElementById('home').scrollIntoView({behavior:'smooth'});
-  });
-  </script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="mr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>चवदार चहा — चहा चा बादशहा</title>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    :root{--accent:#ff9800;--green:#25d366;--card:#ffffffcc;--text:#222;}
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:'Poppins',sans-serif;background:linear-gradient(-45deg,#fff6e0,#ffe5c2,#fff1d6,#fffaf0);background-size:400% 400%;animation:bgMove 10s ease infinite;color:var(--text);overflow-x:hidden;padding-top:72px;}
-    @keyframes bgMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-    nav{position:fixed;top:0;left:0;right:0;height:72px;background:rgba(255,255,255,0.98);display:flex;align-items:center;justify-content:space-between;padding:8px 16px;box-shadow:0 2px 10px rgba(0,0,0,0.08);z-index:120;}
-    .nav-left{display:flex;align-items:center;gap:12px}
-    .nav-logo{width:56px;height:56px;border-radius:50%;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.12)}
-    .nav-logo img{width:100%;height:100%;object-fit:cover}
-    .nav-title{font-family:'Baloo 2',cursive;font-size:1.05rem;color:var(--accent);margin-left:4px}
-    .lang-toggle{border:1px solid #eee;padding:6px 10px;border-radius:20px;cursor:pointer;background:#fff;font-weight:600}
-    header{height:86vh;min-height:420px;background:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://i.ibb.co/7Jvp3K9F/soothing-cinnamon-drink-casting-cozy-light-table.jpg')center/cover no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:20px;}
-    header h1{font-family:'Baloo 2',cursive;font-size:3rem;color:#ffeb3b}
-    header p{font-size:1.1rem;margin-top:8px;font-weight:600}
-    .shop-btn{margin-top:18px;background:var(--accent);color:#fff;border:none;padding:12px 28px;border-radius:40px;font-weight:700;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,0.2)}
-    section{padding:56px 18px}
-    h2{text-align:center;margin-bottom:20px;font-size:1.6rem}
-    .carousel{display:flex;gap:18px;overflow-x:auto;padding:12px 6px;scroll-behavior:smooth}
-    .carousel::-webkit-scrollbar{display:none}
-    .product{min-width:240px;background:var(--card);border-radius:12px;padding:12px;box-shadow:0 6px 16px rgba(0,0,0,0.08);text-align:center;flex-shrink:0}
-    .product img{width:100%;height:160px;object-fit:cover;border-radius:8px}
-    .product h3{margin-top:10px;font-size:1.02rem}
-    .add-btn{margin-top:6px;background:#43a047;color:#fff;border:none;padding:8px 18px;border-radius:999px;cursor:pointer;font-weight:700}
-    #cart{background:#f8f9fa;border-top:1px solid #eee;padding-bottom:80px}
-    form{max-width:560px;margin:auto;display:flex;flex-direction:column;gap:10px}
-    input,textarea{padding:10px;border-radius:8px;border:1px solid #ccc;background:#fff}
-    button[type=submit]{background:var(--green);color:#fff;border:none;padding:12px;border-radius:999px;font-weight:700;cursor:pointer}
-    .float-wrap{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:12px;z-index:130}
-    .float-btn{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,0.12);cursor:pointer;text-decoration:none}
-    .whatsapp{background:var(--green)}.call{background:#2e7d32;color:#fff;flex-direction:column;padding:6px 10px}
-  </style>
-</head>
-<body>
-  <nav>
-    <div class="nav-left"><div class="nav-logo"><img src="https://i.ibb.co/j9dvTy3D/Logo.jpg" alt="logo"></div><div class="nav-title">चवदार चहा</div></div>
-    <div><div class="lang-toggle" id="langToggle">English</div></div>
-  </nav>
-
-  <header id="home">
-    <h1 id="heroTitle">चवदार चहा</h1>
-    <p id="heroTag">चहा चा बादशहा</p>
-    <button class="shop-btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">आता खरेदी करा</button>
-  </header>
-
-  <section id="products">
-    <h2 id="prodTitle">आमची उत्पादने</h2>
-    <div class="carousel" id="productCarousel">
-      <div class="product" data-prod="अमृततुल्य चहा प्रीमिक्स"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>अमृततुल्य चहा प्रीमिक्स</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn">कार्टमध्ये टाका</button></div>
-      <div class="product" data-prod="इलायची चहा प्रीमिक्स"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>इलायची चहा प्रीमिक्स</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn">कार्टमध्ये टाका</button></div>
-      <div class="product" data-prod="आले चहा प्रीमिक्स"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>आले चहा प्रीमिक्स</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn">कार्टमध्ये टाका</button></div>
-      <div class="product" data-prod="गूळ इलायची चहा प्रीमिक्स"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>गूळ इलायची चहा प्रीमिक्स</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn">कार्टमध्ये टाका</button></div>
-      <div class="product" data-prod="गूळ/साखर बंसुंदी चहा प्रीमिक्स"><img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg"><h3>गूळ/साखर बंसुंदी चहा प्रीमिक्स</h3><p>₹45 /125g | ₹280 /1kg</p><button class="add-btn">कार्टमध्ये टाका</button></div>
-    </div>
-  </section>
-
-  <section id="cart">
-    <h2>ऑर्डर करा</h2>
-    <form id="orderForm">
-      <input id="name" type="text" placeholder="पूर्ण नाव" required>
-      <input id="phone" type="tel" placeholder="फोन नंबर" required>
-      <textarea id="address" placeholder="पूर्ण पत्ता (विलीव)" required></textarea>
-      <textarea id="cartItems" readonly placeholder="आपली निवड येथे दिसेल..."></textarea>
-      <button type="submit">WhatsApp वर पाठवा</button>
-    </form>
-  </section>
-
-  <div class="float-wrap">
-    <a class="float-btn whatsapp" id="waBtn" target="_blank" href="https://wa.me/9623031892">🟢</a>
-    <a class="float-btn call" href="tel:9623031892">📞</a>
-  </div>
-
-  <script>
-  let cart=[];const wa='9623031892';
-  document.querySelectorAll('.add-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const prod=btn.parentElement.getAttribute('data-prod');
-      if(!cart.includes(prod))cart.push(prod);
-      document.getElementById('cartItems').value=cart.join('\n');
-      alert(prod+' कार्टमध्ये टाकले');
-    });
-  });
-
-  document.getElementById('orderForm').addEventListener('submit',function(e){
-    e.preventDefault();
-    if(!cart.length){alert('आपले कार्ट रिकामे आहे!');return;}
-    const name=document.getElementById('name').value.trim();
-    const ph=document.getElementById('phone').value.trim();
-    const ad=document.getElementById('address').value.trim();
-    const msg=`🛍️ नवीन ऑर्डर - चवदार चहा\nनाव: ${name}\nफोन: ${ph}\nपत्ता: ${ad}\nऑर्डर तपशील:\n${cart.join('\n')}\n\nधन्यवाद! आपल्या ऑर्डरबद्दल आमचा प्रतिनिधी लवकरच संपर्क करेल.`;
-    window.open('https://wa.me/'+wa+'?text='+encodeURIComponent(msg),'_blank');
-    alert('✅ ऑर्डर पाठवली गेली! धन्यवाद.');
-    this.reset();cart=[];document.getElementById('cartItems').value='';
-    document.getElementById('home').scrollIntoView({behavior:'smooth'});
-  });
-  </script>
-
 </body>
 </html>
