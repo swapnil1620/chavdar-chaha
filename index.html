@@ -77,9 +77,9 @@
 
     /* Floating buttons */
     .float-wrap{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:12px;z-index:130}
-    .float-btn{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,0.12);cursor:pointer}
+    .float-btn{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,0.12);cursor:pointer;text-decoration:none}
     .whatsapp{background:var(--green);color:#fff}
-    .call{background:#2e7d32;color:#fff;flex-direction:column;padding:4px 10px}
+    .call{background:#2e7d32;color:#fff;flex-direction:column;padding:6px 10px}
     .call small{font-size:0.7rem;color:#fff;display:block}
 
     footer{background:#111;color:#fff;padding:18px;text-align:center;font-size:0.95rem;margin-top:30px}
@@ -104,10 +104,10 @@
 
     <div style="display:flex;align-items:center;gap:12px">
       <div class="nav-links" id="navLinks">
-        <a href="#home" data-key="nav.home">मुख्यपृष्ठ</a>
-        <a href="#products" data-key="nav.products">उत्पदे</a>
-        <a href="#about" data-key="nav.about">आमच्याबद्दल</a>
-        <a href="#cart" data-key="nav.order">ऑर्डर</a>
+        <a id="navHome" href="#home">मुख्यपृष्ठ</a>
+        <a id="navProducts" href="#products">उत्पदे</a>
+        <a id="navAbout" href="#about">आमच्याबद्दल</a>
+        <a id="navOrder" href="#cart">ऑर्डर</a>
       </div>
 
       <!-- Language toggle -->
@@ -119,74 +119,71 @@
 
   <!-- HERO -->
   <header id="home">
-    <h1 data-key="hero.title">चवदार चहा</h1>
-    <p data-key="hero.tagline">चहा चा बादशहा</p>
-    <button class="shop-btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" data-key="hero.cta">आता खरेदी करा</button>
+    <h1 id="heroTitle">चवदार चहा</h1>
+    <p id="heroTagline">चहा चा बादशहा</p>
+    <button class="shop-btn" id="heroCta">आता खरेदी करा</button>
   </header>
 
   <!-- PRODUCTS -->
   <section id="products">
-    <h2 data-key="products.title">आमची उत्पादने</h2>
+    <h2 id="productsTitle">आमची उत्पादने</h2>
     <div class="carousel" id="productCarousel">
-      <!-- Product cards (IDs used for translation mapping) -->
+      <!-- Product cards (use data-prod) -->
       <div class="product" data-prod="p1">
         <img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg" alt="">
-        <h3 data-key="p1.name">अमृततुल्य चहा प्रीमिक्स</h3>
-        <p data-key="p1.price">₹45 / 125g | ₹280 / 1kg</p>
-        <button class="add-btn" onclick="addToCart('p1')">कार्टमध्ये टाका</button>
+        <h3 id="p1Name">अमृततुल्य चहा प्रीमिक्स</h3>
+        <p id="p1Price">₹45 /125g | ₹280 /1kg</p>
+        <button class="add-btn" data-prod="p1">कार्टमध्ये टाका</button>
       </div>
 
       <div class="product" data-prod="p2">
         <img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg" alt="">
-        <h3 data-key="p2.name">इलायची चहा प्रीमिक्स</h3>
-        <p data-key="p2.price">₹45 / 125g | ₹280 / 1kg</p>
-        <button class="add-btn" onclick="addToCart('p2')">कार्टमध्ये टाका</button>
+        <h3 id="p2Name">इलायची चहा प्रीमिक्स</h3>
+        <p id="p2Price">₹45 /125g | ₹280 /1kg</p>
+        <button class="add-btn" data-prod="p2">कार्टमध्ये टाका</button>
       </div>
 
       <div class="product" data-prod="p3">
         <img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg" alt="">
-        <h3 data-key="p3.name">आले चहा प्रीमिक्स</h3>
-        <p data-key="p3.price">₹45 / 125g | ₹280 / 1kg</p>
-        <button class="add-btn" onclick="addToCart('p3')">कार्टमध्ये टाका</button>
+        <h3 id="p3Name">आले चहा प्रीमिक्स</h3>
+        <p id="p3Price">₹45 /125g | ₹280 /1kg</p>
+        <button class="add-btn" data-prod="p3">कार्टमध्ये टाका</button>
       </div>
 
       <div class="product" data-prod="p4">
         <img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg" alt="">
-        <h3 data-key="p4.name">गूळ इलायची चहा प्रीमिक्स</h3>
-        <p data-key="p4.price">₹45 / 125g | ₹280 / 1kg</p>
-        <button class="add-btn" onclick="addToCart('p4')">कार्टमध्ये टाका</button>
+        <h3 id="p4Name">गूळ इलायची चहा प्रीमिक्स</h3>
+        <p id="p4Price">₹45 /125g | ₹280 /1kg</p>
+        <button class="add-btn" data-prod="p4">कार्टमध्ये टाका</button>
       </div>
 
       <div class="product" data-prod="p5">
         <img src="https://i.ibb.co/6zQKSYz/Chavdar-Chaha-Amruttulya.jpg" alt="">
-        <h3 data-key="p5.name">गूळ/साखर बंसुंदी चहा प्रीमिक्स</h3>
-        <p data-key="p5.price">₹45 / 125g | ₹280 / 1kg</p>
-        <button class="add-btn" onclick="addToCart('p5')">कार्टमध्ये टाका</button>
+        <h3 id="p5Name">गूळ/साखर बंसुंदी चहा प्रीमिक्स</h3>
+        <p id="p5Price">₹45 /125g | ₹280 /1kg</p>
+        <button class="add-btn" data-prod="p5">कार्टमध्ये टाका</button>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
   <section id="about">
-    <h2 data-key="about.title">आमच्याबद्दल</h2>
-    <p data-key="about.text">
-      अमृततुल्य चहा चा खरा स्वाद अनुभवा — आमचे प्रीमियम इंस्टंट टी प्रीमिक्स
-      शुद्ध साखर आणि गूळ (गुंड) व्हेरियन्टमध्ये उपलब्ध. आम्ही प्रत्येक कपमध्ये
-      पारंपरिक आणि समृद्ध चहा चा अनुभव देण्यासाठी उच्च दर्जाचा चहा पावडर,
-      मिल्क सॉलिड्स आणि नैसर्गिक इलायची फ्लेव्हर वापरतो. घरांसाठी, ऑफिससाठी,
-      कॅफेसाठी आणि व्हेंडिंग मशीनसाठी परिपूर्ण. क्लासिक गोडवा किंवा गुळाचा
-      नैसर्गिक स्वाद — दोन्हीमध्ये सातत्य, चव आणि सुगंध सुनिश्चित.
+    <h2 id="aboutTitle">आमच्याबद्दल</h2>
+    <p id="aboutText">
+      अमृततुल्य चहा चा खरा स्वाद अनुभवा — आमचे प्रीमियम इंस्टंट टी प्रीमिक्स.
+      आम्ही साखर व गूळ (गुर) व्हेरिएंटमध्ये उत्पादन देतो. प्रत्येक मिश्रण उच्च दर्जाच्या चहा पावडर, मिल्क सॉलिड्स आणि नैसर्गिक इलायची फ्लेव्हरने तयार केले जाते, ज्यामुळे एका कपात कॅफे-शैलीचा चहा काही सेकंदांत मिळतो. घर, ऑफिस, कॅफे आणि व्हेंडिंग मशीनसाठी परिपूर्ण.
+      क्लासिक गोडवा अथवा गुळाचा नैसर्गिक स्वाद पहात असाल, आमचे अमृततुल्य टी प्रीमिक्स प्रत्येक कपमध्ये सातत्य, चव आणि सुगंध सुनिश्चित करतात.
     </p>
   </section>
 
   <!-- ORDER -->
   <section id="cart">
-    <h2 data-key="order.title">ऑर्डर करा</h2>
-    <form id="orderForm" onsubmit="sendWhatsApp(event)">
-      <input id="name" type="text" placeholder="पूर्ण नाव" required data-key-placeholder="order.name">
-      <input id="phone" type="tel" placeholder="फोन नंबर" required data-key-placeholder="order.phone">
-      <textarea id="address" rows="2" placeholder="पूर्ण पत्ता (विलीव)" required data-key-placeholder="order.address"></textarea>
-      <textarea id="cartItems" rows="4" readonly placeholder="आपली निवड येथे दिसेल..." ></textarea>
+    <h2 id="orderTitle">ऑर्डर करा</h2>
+    <form id="orderForm">
+      <input id="name" type="text" placeholder="पूर्ण नाव" required>
+      <input id="phone" type="tel" placeholder="फोन नंबर" required>
+      <textarea id="address" rows="2" placeholder="पूर्ण पत्ता (विलीव)" required></textarea>
+      <textarea id="cartItems" rows="4" readonly placeholder="आपली निवड येथे दिसेल..."></textarea>
       <button type="submit" id="orderBtn">WhatsApp वर पाठवा</button>
       <small class="note" id="noteText">आम्ही आपल्या ऑर्डरचे पुष्टिकरण WhatsApp वर करण्यात येईल.</small>
     </form>
@@ -196,26 +193,22 @@
   <div class="float-wrap" aria-hidden="false">
     <!-- WhatsApp -->
     <a class="float-btn whatsapp" id="whatsappFloat" title="WhatsApp वर संपर्क करा" href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-      <!-- WhatsApp SVG -->
       <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 1 0-1.7 4.9L21 21l-4.6-1.3A8.5 8.5 0 0 0 21 11.5z"/><path d="M17.2 14.4c-.5-.2-1.7-.9-2-.9-.3 0-.5-.1-.8.2-.3.3-1 .8-1 .8s-.4.2-.8.2c-.3 0-.9-.4-1.9-1.3-1.1-1-.9-1.7-.8-1.9.1-.2.2-.4.3-.6.1-.2.1-.4 0-.6-.1-.2-.8-1.9-1.1-2.6-.3-.6-.6-.4-.8-.4-.2 0-.5 0-.8 0-.3 0-.6.1-.9.4C6.6 7.8 6 9 6 10.4c0 1.4.9 3.1 1.8 4.3 1.1 1.6 3.1 2.9 4.9 3.4.9.2 1.6.2 2.2.1 1.1-.1 1.9-.8 2.3-1.4.4-.6.4-1.3.4-1.5 0-.2-.1-.3-.8-.6z"/></svg>
     </a>
 
     <!-- Call now -->
     <a class="float-btn call" id="callFloat" href="tel:9623031892" title="Call Now" aria-label="Call Now">
-      <!-- Phone SVG -->
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92V21a1 1 0 0 1-1.11 1A19 19 0 0 1 3 5.11 1 1 0 0 1 4 4h4.09a1 1 0 0 1 1 .75c.12.61.33 1.21.62 1.78a1 1 0 0 1-.24 1l-1.7 1.7a16 16 0 0 0 6.57 6.57l1.7-1.7a1 1 0 0 1 1-.24c.57.29 1.17.5 1.78.62a1 1 0 0 1 .75 1V22z"/></svg>
       <small style="font-size:11px;margin-top:3px;line-height:1">आता कॉल करा</small>
     </a>
   </div>
 
   <footer>
-    <div>© <span id="yearText">2026</span> चवदार चहा (स्वप्नील पंडित) — सर्व हक्क राखीव</div>
+    <div>© <span id="yearText">2026</span> चवदार चहा — सर्व हक्क राखीव</div>
   </footer>
 
   <script>
-    /* ====== TRANSLATIONS ======
-       Default: Marathi (mr). English as fallback.
-    */
+    /* TRANSLATIONS */
     const translations = {
       mr: {
         langCode:'mr',
@@ -230,7 +223,7 @@
         aboutTitle:'आमच्याबद्दल',
         aboutText:`अमृततुल्य चहा चा खरा स्वाद अनुभवा — आमचे प्रीमियम इंस्टंट टी प्रीमिक्स.
 आम्ही साखर व गूळ (गुर) व्हेरिएंटमध्ये उत्पादन देतो. प्रत्येक मिश्रण उच्च दर्जाच्या चहा पावडर, मिल्क सॉलिड्स आणि नैसर्गिक इलायची फ्लेव्हरने तयार केले जाते, ज्यामुळे एका कपात कॅफे-शैलीचा चहा काही सेकंदांत मिळतो. घर, ऑफिस, कॅफे आणि व्हेंडिंग मशीनसाठी परिपूर्ण.
-क्लासिक गोडवा अथवा गूळाचा नैसर्गिक स्वाद पहात असाल, आमचे अमृततुल्य टी प्रीमिक्स प्रत्येक कपमध्ये सातत्य, चव आणि सुगंध सुनिश्चित करतात.`,
+क्लासिक गोडवा अथवा गुळाचा नैसर्गिक स्वाद पहात असाल, आमचे अमृततुल्य टी प्रीमिक्स प्रत्येक कपमध्ये सातत्य, चव आणि सुगंध सुनिश्चित करतात.`,
         orderTitle:'ऑर्डर करा',
         placeholders:{name:'पूर्ण नाव', phone:'फोन नंबर', address:'पूर्ण पत्ता (विलीव)'},
         cartPlaceholder:'आपली निवड येथे दिसेल...',
@@ -260,90 +253,70 @@ Whether you prefer classic sweetness or the earthy richness of jaggery, our Amru
       }
     };
 
-    // Elements
+    // Elements & state
     const langToggle = document.getElementById('langToggle');
     const langLabel = document.getElementById('langLabel');
-    const htmlEl = document.documentElement;
-    let currentLang = 'mr'; // default Marathi
+    const currentLangState = { lang: 'mr' }; // default Marathi
 
-    // Map UI keys to DOM nodes
-    function applyTranslations(lang){
+    // Apply translations by setting specific elements (IDs)
+    function applyTranslations(lang) {
       const t = translations[lang];
-      // set lang attribute
-      htmlEl.lang = (t.langCode === 'mr') ? 'mr' : 'en';
-      // nav links
-      document.querySelectorAll('[data-key]').forEach(el=>{
-        const path = el.getAttribute('data-key').split('.');
-        let value = t;
-        path.forEach(k => { if(value) value = value[k]; });
-        if(value) el.textContent = value;
-      });
+      // header
+      document.documentElement.lang = (lang === 'mr') ? 'mr' : 'en';
+      document.getElementById('navHome').textContent = t.nav.home;
+      document.getElementById('navProducts').textContent = t.nav.products;
+      document.getElementById('navAbout').textContent = t.nav.about;
+      document.getElementById('navOrder').textContent = t.nav.order;
 
-      // placeholders
-      document.querySelectorAll('[data-key-placeholder]').forEach(inp=>{
-        const key = inp.getAttribute('data-key-placeholder');
-        if(t.placeholders[key.replace('order.','')]) {
-          inp.placeholder = t.placeholders[key.replace('order.','')];
-        } else {
-          // fallback
-        }
-      });
+      document.getElementById('heroTitle').textContent = t.hero.title;
+      document.getElementById('heroTagline').textContent = t.hero.tagline;
+      document.getElementById('heroCta').textContent = t.hero.cta;
 
-      // static keys
-      document.querySelector('[data-key="nav.home"]').textContent = t.nav.home || t.nav.home;
-      document.querySelector('[data-key="nav.products"]')?.textContent = t.nav.products;
-      document.querySelector('[data-key="nav.about"]')?.textContent = t.nav.about;
-      document.querySelector('[data-key="nav.order"]')?.textContent = t.nav.order;
-
-      document.querySelector('[data-key="hero.title"]').textContent = t.hero.title;
-      document.querySelector('[data-key="hero.tagline"]').textContent = t.hero.tagline;
-      document.querySelector('[data-key="hero.cta"]').textContent = t.hero.cta;
-
-      document.querySelector('[data-key="products.title"]').textContent = t.productsTitle;
+      document.getElementById('productsTitle').textContent = t.productsTitle;
 
       // products
-      document.querySelector('[data-prod="p1"] h3').textContent = t.p1.name;
-      document.querySelector('[data-prod="p1"] p').textContent = t.p1.price;
-      document.querySelector('[data-prod="p2"] h3').textContent = t.p2.name;
-      document.querySelector('[data-prod="p2"] p').textContent = t.p2.price;
-      document.querySelector('[data-prod="p3"] h3').textContent = t.p3.name;
-      document.querySelector('[data-prod="p3"] p').textContent = t.p3.price;
-      document.querySelector('[data-prod="p4"] h3').textContent = t.p4.name;
-      document.querySelector('[data-prod="p4"] p').textContent = t.p4.price;
-      document.querySelector('[data-prod="p5"] h3').textContent = t.p5.name;
-      document.querySelector('[data-prod="p5"] p').textContent = t.p5.price;
+      document.getElementById('p1Name').textContent = t.p1.name;
+      document.getElementById('p1Price').textContent = t.p1.price;
+      document.getElementById('p2Name').textContent = t.p2.name;
+      document.getElementById('p2Price').textContent = t.p2.price;
+      document.getElementById('p3Name').textContent = t.p3.name;
+      document.getElementById('p3Price').textContent = t.p3.price;
+      document.getElementById('p4Name').textContent = t.p4.name;
+      document.getElementById('p4Price').textContent = t.p4.price;
+      document.getElementById('p5Name').textContent = t.p5.name;
+      document.getElementById('p5Price').textContent = t.p5.price;
 
-      document.querySelector('[data-key="about.title"]').textContent = t.aboutTitle;
-      document.querySelector('[data-key="about.text"]').textContent = t.aboutText;
+      document.getElementById('aboutTitle').textContent = t.aboutTitle;
+      document.getElementById('aboutText').textContent = t.aboutText;
 
-      document.querySelector('[data-key="order.title"]').textContent = t.orderTitle;
-      // placeholders update explicit
+      document.getElementById('orderTitle').textContent = t.orderTitle;
       document.getElementById('name').placeholder = t.placeholders.name;
       document.getElementById('phone').placeholder = t.placeholders.phone;
       document.getElementById('address').placeholder = t.placeholders.address;
-      document.getElementById('cartItems').placeholder = t.cartPlaceholder || '';
+      document.getElementById('cartItems').placeholder = t.cartPlaceholder;
       document.getElementById('orderBtn').textContent = t.orderBtn;
       document.getElementById('noteText').textContent = t.note;
 
-      // update nav label for toggle
       langLabel.textContent = (lang === 'mr') ? 'English' : 'मराठी';
-      currentLang = lang;
-      // update site title alt if needed
       document.getElementById('siteTitle').textContent = t.hero.title;
-      // update year if needed
       document.getElementById('yearText').textContent = new Date().getFullYear();
+
+      currentLangState.lang = lang;
+
+      // update whatsapp enquiry link text accordingly
+      updateWhatsAppFloat();
     }
 
-    // Initialize default language
-    applyTranslations(currentLang);
+    // Initialize
+    applyTranslations(currentLangState.lang);
 
-    // Toggle language on click
-    langToggle.addEventListener('click', ()=>{
-      const next = (currentLang === 'mr') ? 'en' : 'mr';
+    // Toggle handler
+    langToggle.addEventListener('click', () => {
+      const next = currentLangState.lang === 'mr' ? 'en' : 'mr';
       applyTranslations(next);
     });
 
-    /* ====== CART & WHATSAPP (Marathi default messages) ====== */
+    /* CART & WHATSAPP */
     const productNames = {
       p1:{mr:translations.mr.p1.name,en:translations.en.p1.name},
       p2:{mr:translations.mr.p2.name,en:translations.en.p2.name},
@@ -354,17 +327,31 @@ Whether you prefer classic sweetness or the earthy richness of jaggery, our Amru
 
     let cart = [];
 
-    function addToCart(prodId){
-      const nameText = productNames[prodId][currentLang];
-      cart.push(nameText + " - ₹45 /125g");
-      document.getElementById('cartItems').value = cart.join('\\n');
-      // Small UX feedback
-      alert((currentLang==='mr' ? 'कार्टमध्ये टाकले: ' : 'Added to cart: ') + nameText);
+    // Wire add-to-cart buttons (no inline onclick to avoid timing issues)
+    function wireAddButtons() {
+      document.querySelectorAll('.add-btn').forEach(btn=>{
+        btn.addEventListener('click', (ev)=>{
+          const prodId = btn.getAttribute('data-prod');
+          addToCart(prodId);
+        });
+      });
     }
 
-    // Build Marathi order message (also uses English if currentLang=en)
-    function buildOrderMessage(name, phone, address, items){
-      if(currentLang === 'mr'){
+    function addToCart(prodId){
+      const lang = currentLangState.lang;
+      const productText = productNames[prodId][lang] || productNames[prodId].mr;
+      // Use price text from corresponding price element
+      const priceText = document.getElementById(prodId + 'Price') ? document.getElementById(prodId + 'Price').textContent : '';
+      const entry = productText + (priceText ? ' — ' + priceText : '');
+      cart.push(entry);
+      document.getElementById('cartItems').value = cart.join('\n');
+      alert( (lang === 'mr' ? 'कार्टमध्ये टाकले: ' : 'Added to cart: ') + productText );
+    }
+
+    // Build order message (Marathi when default/selected)
+    function buildOrderMessage(name, phone, address, items) {
+      const lang = currentLangState.lang;
+      if(lang === 'mr'){
         return `🛍️ नवीन ऑर्डर - चवदार चहा
 नाव: ${name}
 फोन: ${phone}
@@ -385,8 +372,8 @@ Thank you! Our team will contact you shortly. ☕`;
       }
     }
 
-    // Send WhatsApp
-    function sendWhatsApp(e){
+    // Send via WhatsApp when form submitted
+    document.getElementById('orderForm').addEventListener('submit', function(e){
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
       const phone = document.getElementById('phone').value.trim();
@@ -394,30 +381,27 @@ Thank you! Our team will contact you shortly. ☕`;
       const items = document.getElementById('cartItems').value.trim();
 
       if(!items){
-        alert(currentLang==='mr' ? 'आपले कार्ट रिकामे आहे!' : 'Your cart is empty!');
+        alert(currentLangState.lang === 'mr' ? 'आपले कार्ट रिकामे आहे!' : 'Your cart is empty!');
         return;
       }
+
       const msg = buildOrderMessage(name, phone, address, items);
       const waUrl = "https://wa.me/9623031892?text=" + encodeURIComponent(msg);
       window.open(waUrl, '_blank');
-      // Auto-reply toast (simple alert)
+
       setTimeout(()=> {
-        alert(currentLang==='mr' ? '✅ धन्यवाद! आम्ही लवकरच पुष्टी करू.' : '✅ Thank you! We will confirm shortly.');
+        alert(currentLangState.lang === 'mr' ? '✅ धन्यवाद! आम्ही लवकरच पुष्टी करू.' : '✅ Thank you! We will confirm shortly.');
       }, 1400);
-    }
+    });
 
     // Prepare whatsapp float href to an enquiry message (localized)
     function updateWhatsAppFloat(){
-      const enquiry = (currentLang==='mr')
+      const enquiry = (currentLangState.lang === 'mr')
         ? 'नमस्कार चवदार चहा, मला तुमच्या चहा उत्पादनांबद्दल चौकशी करायची आहे.'
         : 'Hello Chavdar Chaha, I have an enquiry about your tea products.';
       const href = "https://wa.me/9623031892?text=" + encodeURIComponent(enquiry);
       document.getElementById('whatsappFloat').setAttribute('href', href);
     }
-    updateWhatsAppFloat();
-
-    // update when language toggles
-    langToggle.addEventListener('click', updateWhatsAppFloat);
 
     // Auto-scroll carousel
     const carousel = document.getElementById('productCarousel');
@@ -428,6 +412,15 @@ Thank you! Our team will contact you shortly. ☕`;
       if(scrollPos >= (carousel.scrollWidth - carousel.clientWidth)) scrollPos = 0;
       carousel.scrollLeft = scrollPos;
     }, 40);
+
+    // Run setup on DOM ready
+    document.addEventListener('DOMContentLoaded', ()=>{
+      wireAddButtons();
+      updateWhatsAppFloat();
+    });
+
+    // Also wire add buttons immediately in case DOMContentLoaded already fired
+    wireAddButtons();
   </script>
 </body>
 </html>
