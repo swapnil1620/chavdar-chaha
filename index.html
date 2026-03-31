@@ -1,376 +1,485 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chavdar Chaha - Chaha cha Badshahh</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-    html {scroll-behavior: smooth;}
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(-45deg, #fff6e0, #ffe5c2, #fff1d6, #fffaf0);
-      background-size: 400% 400%;
-      animation: bgMove 10s ease infinite;
-      overflow-x: hidden;
-    }
-    @keyframes bgMove {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chavdar Chaha | Chaha cha Badshahh</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5d3a1a;
+            --secondary: #d4a373;
+            --accent: #f4a261;
+            --light: #fefae0;
+            --dark: #283618;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
 
-    /* Navbar */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(255,255,255,0.95);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      z-index: 100;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-    nav ul li a:hover {color: #ff9800;}
-    .nav-logo img {
-      width: 60px; height: 60px; border-radius: 50%;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
 
-    /* Hero Section */
-    header {
-      width: 100%;
-      height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-        url('https://i.ibb.co/7Jvp3K9F/soothing-cinnamon-drink-casting-cozy-light-table.jpg') center/cover no-repeat;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #fff;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-      padding-top: 70px;
-    }
-    header h1 {
-      font-family: 'Pacifico', cursive;
-      font-size: 3em;
-      color: #ffeb3b;
-    }
-    header p {
-      font-size: 1.4em;
-      color: #fff;
-      margin-top: 10px;
-      font-weight: 600;
-    }
-    .shop-btn {
-      margin-top: 25px;
-      background: #ff9800;
-      color: #fff;
-      border: none;
-      padding: 15px 35px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-size: 1.1em;
-      font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      transition: all 0.3s;
-    }
-    .shop-btn:hover {
-      background: #e68900;
-      transform: scale(1.05);
-    }
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
 
-    section {padding: 60px 20px;}
-    h2 {text-align: center; font-size: 2.2em; margin-bottom: 30px; color: #2e2e2e;}
+        /* --- Navigation --- */
+        nav {
+            background: rgba(93, 58, 26, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
 
-    /* Product carousel */
-    .carousel {
-      display: flex;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      gap: 20px;
-      padding-bottom: 10px;
-    }
-    .carousel::-webkit-scrollbar {display: none;}
-    .product {
-      min-width: 260px;
-      background: #ffffffcc;
-      border-radius: 15px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-      flex-shrink: 0;
-      text-align: center;
-      padding: 15px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .product:hover {transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2);}
-    .product img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-    .product h3 {margin-top: 10px; font-size: 1.2em; color: #222;}
-    .product p {color: #555;}
-    .add-btn {
-      margin-top: 10px;
-      background: #43a047;
-      color: #fff;
-      border: none;
-      padding: 10px 25px;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-    }
-    .add-btn:hover {background: #2e7d32; transform: scale(1.05);}
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
 
-    /* About Section */
-    #about p {
-      max-width: 800px;
-      margin: auto;
-      font-size: 1.05em;
-      line-height: 1.6;
-      text-align: center;
-      color: #444;
-      background: #fff8f0;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
+        .logo-container img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--secondary);
+            object-fit: cover;
+        }
 
-    /* Cart Section */
-    #cart {
-      background: #f8f9fa;
-      padding: 50px 20px;
-      border-top: 1px solid #ddd;
-    }
-    form {
-      max-width: 500px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      background: #fff;
-    }
-    button[type="submit"] {
-      background: #25d366;
-      color: #fff;
-      border: none;
-      padding: 12px;
-      border-radius: 30px;
-      font-size: 1em;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    button[type="submit"]:hover {background: #1ebe57;}
+        .logo-text h1 {
+            color: var(--white);
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+        }
 
-    /* WhatsApp floating */
-    .whatsapp-float {
-      position: fixed;
-      width: 60px;
-      height: 60px;
-      bottom: 25px;
-      right: 25px;
-      background-color: #25d366;
-      color: #FFF;
-      border-radius: 50%;
-      text-align: center;
-      font-size: 35px;
-      box-shadow: 2px 2px 3px #999;
-      z-index: 100;
-    }
-    .whatsapp-float i {
-      margin-top: 12px;
-    }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
 
-    footer {
-      background: #1a1a1a;
-      color: #fff;
-      text-align: center;
-      padding: 15px 0;
-      margin-top: 30px;
-      font-size: 0.9em;
-    }
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
 
-    @media (max-width: 600px) {
-      header h1 {font-size: 2.2em;}
-      header p {font-size: 1.1em;}
-      nav ul {gap: 10px;}
-      .nav-logo img {width: 50px; height: 50px;}
-    }
-  </style>
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://i.ibb.co/j9dvTy3D/Logo.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 20px;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .btn-main {
+            background: var(--accent);
+            color: var(--white);
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-main:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* --- Products Section --- */
+        .products {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: 0.4s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            padding: 20px;
+            background: #fdfdfd;
+        }
+
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .product-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .price {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .btn-cart {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-cart:hover {
+            background: var(--accent);
+        }
+
+        /* --- About Section --- */
+        .about-section {
+            background: var(--white);
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- Floating Cart Summary --- */
+        .cart-summary {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+            z-index: 999;
+            width: 320px;
+            border: 1px solid var(--secondary);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        #cart-items {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 50px 5%;
+            text-align: center;
+        }
+
+        .social-links {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero h2 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .cart-summary {
+                width: 90%;
+                left: 5%;
+                right: 5%;
+                bottom: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav>
-    <div class="nav-logo">
-      <img src="https://i.ibb.co/j9dvTy3D/Logo.jpg" alt="Chavdar Chaha Logo">
+    <nav>
+        <a href="#" class="logo-container">
+            <img src="https://i.ibb.co/j9dvTy3D/Logo.jpg" alt="Chavdar Chaha Logo">
+            <div class="logo-text">
+                <h1>Chavdar Chaha</h1>
+            </div>
+        </a>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="https://wa.me/919623031892">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <h2>Chaha cha Badshahh</h2>
+        <p>Premium Amruttulya Tea Premixes. Just add hot water and enjoy the authentic Indian taste instantly.</p>
+        <a href="#products" class="btn-main"><i class="fas fa-shopping-basket"></i> View Products</a>
+    </section>
+
+    <section id="products" class="products">
+        <h2 class="section-title">Our Best Sellers</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://i.ibb.co/rYZm1fK/Amrutulya-Masala-Tea-Premix.png" alt="Amruttulya Chaha">
+                <div class="product-info">
+                    <h3>Amruttulya Chaha Premix</h3>
+                    <p class="price">₹350 <small>/ 1kg</small></p>
+                    <button class="btn-cart" onclick="addToCart('Amruttulya Chaha', 350)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://i.ibb.co/mVD1Vb1z/Amruttlya-Cardamom-Premix-Tea.png" alt="Elaichi Chaha">
+                <div class="product-info">
+                    <h3>Elaichi Chaha Premix</h3>
+                    <p class="price">₹350 <small>/ 1kg</small></p>
+                    <button class="btn-cart" onclick="addToCart('Elaichi Chaha', 350)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://i.ibb.co/GQtVk7LS/Jaggery-Cardamom-Premix-tea.png" alt="Jaggery Elaichi">
+                <div class="product-info">
+                    <h3>Jaggery Elaichi Premix</h3>
+                    <p class="price">₹399 <small>/ 1kg</small></p>
+                    <button class="btn-cart" onclick="addToCart('Jaggery Elaichi', 399)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://i.ibb.co/tw5wF55Y/Jaggery-Basundi-Premix-Tea.png" alt="Jaggery Basundi">
+                <div class="product-info">
+                    <h3>Jaggery Basundi Premix</h3>
+                    <p class="price">₹399 <small>/ 1kg</small></p>
+                    <button class="btn-cart" onclick="addToCart('Jaggery Basundi', 399)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <h2 class="section-title">About Us</h2>
+            <p>Discover the true taste of Amruttulya Tea with our premium Instant Tea Premixes. We offer a complete range of Amruttulya Premix products available in Sugar and Jaggery (Gur) variants — crafted to deliver the authentic Indian chai flavor loved by tea enthusiasts.</p>
+            <br>
+            <p>Perfect for homes, offices, cafés, and vending machines. Consistency, taste, and aroma in every cup.</p>
+        </div>
+    </section>
+
+    <div class="cart-summary" id="cart-summary" style="display: none;">
+        <div class="cart-header">
+            <h4 style="color: var(--primary);"><i class="fas fa-shopping-cart"></i> Your Order</h4>
+            <button onclick="resetCart()" style="background: none; border: none; color: #ff4444; cursor: pointer; font-size: 0.8rem;">Clear All</button>
+        </div>
+        <div id="cart-items"></div>
+        <div class="cart-total-row">
+            <span>Total:</span>
+            <span>₹<span id="cart-total">0</span></span>
+        </div>
+        <button class="btn-main" style="width: 100%; margin-top: 15px; border-radius: 10px;" onclick="checkout()">
+            <i class="fab fa-whatsapp"></i> Order on WhatsApp
+        </button>
     </div>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#cart">Order</a></li>
-      <li><a href="https://wa.me/9623031892?text=Hello Chavdar Chaha, I have an enquiry about your tea products." target="_blank">Contact</a></li>
-    </ul>
-  </nav>
 
-  <!-- Hero Section -->
-  <header id="home">
-    <h1>Chavdar Chaha</h1>
-    <p>Chaha cha Badshahh</p>
-    <button class="shop-btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'});">Shop Now</button>
-  </header>
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/919623031892"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p>© 2026 Chavdar Chaha | Crafted by Swapnil Pandit (MD & CEO)</p>
+        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">MAPRICOT FOODS PVT LTD</p>
+    </footer>
 
-  <!-- Product Section -->
-  <section id="products">
-    <h2>Our Products</h2>
-    <div class="carousel" id="productCarousel">
-      <div class="product"><img src="https://i.ibb.co/rYZm1fK/Amrutulya-Masala-Tea-Premix.png"><h3>Amruttulya Chaha Premix</h3><p>₹45 /125g | ₹350 /1kg</p><button class="add-btn" onclick="addToCart('Amruttulya Chaha Premix - ₹45 /125g')">Add to Cart</button></div>
-      <div class="product"><img src="https://i.ibb.co/mVD1Vb1z/Amruttlya-Cardamom-Premix-Tea.png"><h3>Elaichi Chaha Premix</h3><p>₹45 /125g | ₹350 /1kg</p><button class="add-btn" onclick="addToCart('Elaichi Chaha Premix - ₹45 /125g')">Add to Cart</button></div>
-      <div class="product"><img src="https://i.ibb.co/rYZm1fK/Amrutulya-Masala-Tea-Premix.png"><h3>Ginger Chaha Premix</h3><p>₹45 /125g | ₹350 /1kg</p><button class="add-btn" onclick="addToCart('Ginger Chaha Premix - ₹45 /125g')">Add to Cart</button></div>
-      <div class="product"><img src="https://i.ibb.co/GQtVk7LS/Jaggery-Cardamom-Premix-tea.png"><h3>Jaggery Elaichi Chaha Premix</h3><p>₹50 /125g | ₹399 /1kg</p><button class="add-btn" onclick="addToCart('Jaggery Elaichi Chaha Premix - ₹45 /125g')">Add to Cart</button></div>
-      <div class="product"><img src="https://i.ibb.co/tw5wF55Y/Jaggery-Basundi-Premix-Tea.png"><h3>Jaggery Bansundi Tea Premix</h3><p>₹50 /125g | ₹399 /1kg</p><button class="add-btn" onclick="addToCart('Jaggery Sugar Bansundi Tea Premix - ₹45 /125g')">Add to Cart</button></div>
-    </div>
-  </section>
+    <script>
+        let cart = [];
+        let total = 0;
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Us</h2>
-    <p>Discover the true taste of Amruttulya Tea with our premium Instant Tea Premixes. We offer a complete range of Amruttulya Premix products available in Sugar and Jaggery (Gur) variants — crafted to deliver the authentic Indian chai flavor loved by tea enthusiasts.
-    Each blend is made from high-quality tea powder, milk solids, and natural cardamom flavor, giving you café-style tea in seconds. Perfect for homes, offices, cafés, and vending machines.
-    Whether you prefer classic sweetness or the earthy richness of jaggery, our Amruttulya Tea Premix ensures consistency, taste, and aroma in every cup.
-    Buy our Cardamom Tea Premix, Masala Tea Premix, and Jaggery Tea Premix — and enjoy the real Amruttulya experience anytime, anywhere!</p>
-  </section>
+        function addToCart(name, price) {
+            cart.push({name, price});
+            total += price;
+            updateCartUI();
+            
+            // Subtle animation feedback
+            const summary = document.getElementById('cart-summary');
+            summary.style.transform = "scale(1.05)";
+            setTimeout(() => summary.style.transform = "scale(1)", 200);
+        }
 
-  <!-- Order Section -->
-  <section id="cart">
-    <h2>Place Your Order</h2>
-    <form id="orderForm" onsubmit="sendWhatsApp(event)">
-      <input type="text" id="name" placeholder="Your Full Name" required>
-      <input type="tel" id="phone" placeholder="Phone Number" required>
-      <textarea id="address" rows="2" placeholder="Full Delivery Address" required></textarea>
-      <textarea id="cartItems" rows="4" readonly placeholder="Your selected items..."></textarea>
-      <button type="submit">Place Order via WhatsApp</button>
-    </form>
-  </section>
+        function updateCartUI() {
+            const summary = document.getElementById('cart-summary');
+            const itemsList = document.getElementById('cart-items');
+            const totalSpan = document.getElementById('cart-total');
+            
+            if (cart.length > 0) {
+                summary.style.display = 'block';
+                itemsList.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item">
+                        <span>${item.name}</span>
+                        <span>₹${item.price}</span>
+                    </div>
+                `).join('');
+                totalSpan.innerText = total;
+            } else {
+                summary.style.display = 'none';
+            }
+        }
 
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/8080586528?text=Hello Chavdar Chaha, I have an enquiry about your tea products." class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+        function resetCart() {
+            cart = [];
+            total = 0;
+            updateCartUI();
+        }
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 Chavdar Chaha | Crafted with ☕ by Swapnil Pandit(MD & CEO)</p>
-  </footer>
+        function checkout() {
+            if (cart.length === 0) return;
 
-  <!-- JS -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <script>
-    let cart = [];
-
-    function addToCart(item) {
-      cart.push(item);
-      document.getElementById('cartItems').value = cart.join('\n');
-      alert(item + " added to cart!");
-    }
-
-    function sendWhatsApp(e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const address = document.getElementById('address').value.trim();
-      const items = document.getElementById('cartItems').value.trim();
-
-      if (!items) {
-        alert("Your cart is empty!");
-        return;
-      }
-
-      const msg = `🛍️ New Order - Chavdar Chaha 
-Name: ${name}
-Phone: ${phone}
-Address: ${address}
-Order Details: ${items}
-Thank you for ordering from Chavdar Chaha! ☕ Our team will confirm your order shortly. 🙏`;
-
-      const whatsappURL = "https://wa.me/8080586528?text=" + encodeURIComponent(msg);
-      window.open(whatsappURL, "_blank");
-
-      // Clear form and cart
-      document.getElementById('orderForm').reset();
-      document.getElementById('cartItems').value = "";
-      cart = [];
-
-      // Show animated toast message with ding sound
-      showToast("✅ Your order has been sent successfully! We'll confirm it shortly on WhatsApp.");
-    }
-
-    function showToast(message) {
-      let toast = document.getElementById('orderToast');
-      if (!toast) {
-        toast = document.createElement('div');
-        toast.id = 'orderToast';
-        toast.style.position = 'fixed';
-        toast.style.bottom = '-80px';
-        toast.style.left = '50%';
-        toast.style.transform = 'translateX(-50%)';
-        toast.style.backgroundColor = '#ff9800';
-        toast.style.color = '#fff';
-        toast.style.padding = '14px 22px';
-        toast.style.borderRadius = '30px';
-        toast.style.fontSize = '1em';
-        toast.style.fontWeight = '600';
-        toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
-        toast.style.transition = 'all 0.6s ease';
-        toast.style.zIndex = '999';
-        document.body.appendChild(toast);
-      }
-
-      toast.innerText = message;
-      toast.style.bottom = '30px'; 
-      toast.style.opacity = '1';
-
-      // Play a soft ding sound
-      const ding = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_3b27b13b9d.mp3?filename=interface-124464.mp3');
-      ding.play();
-
-      setTimeout(() => {
-        toast.style.bottom = '-80px';
-        toast.style.opacity = '0';
-      }, 5000);
-    }
-
-    // Auto-scroll carousel
-    const carousel = document.getElementById('productCarousel');
-    let scrollPos = 0;
-    setInterval(() => {
-      scrollPos += 1;
-      if (scrollPos >= carousel.scrollWidth - carousel.clientWidth) scrollPos = 0;
-      carousel.scrollLeft = scrollPos;
-    }, 50);
-  </script>
+            let message = "Hello Chavdar Chaha! 👋\nI'd like to place an order:\n\n";
+            
+            // Combine duplicates for a cleaner message
+            const counts = {};
+            cart.forEach(item => counts[item.name] = (counts[item.name] || 0) + 1);
+            
+            for (const [name, count] of Object.entries(counts)) {
+                message += `✅ ${name} x ${count}\n`;
+            }
+            
+            message += `\n*Total Payable: ₹${total}*`;
+            message += "\n\nPlease share payment details and delivery time.";
+            
+            const encodedMessage = encodeURIComponent(message);
+            // Added 91 country code for India
+            const whatsappUrl = `https://wa.me/919623031892?text=${encodedMessage}`;
+            
+            // Open in new tab/app
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
 </body>
 </html>
