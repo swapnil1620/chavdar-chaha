@@ -1,486 +1,1193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chavdar Chaha | Chaha cha Badshahh</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #5d3a1a;
-            --secondary: #d4a373;
-            --accent: #f4a261;
-            --light: #fefae0;
-            --dark: #283618;
-            --white: #ffffff;
-            --shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chavdar Chaha | चवदार चहा — चहा चा बादशाह</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            scroll-behavior: smooth;
-        }
+<style>
+:root {
+  --saffron: #E8751A;
+  --deep-amber: #B85C10;
+  --gold: #D4A017;
+  --cream: #FDF6E8;
+  --dark-brown: #2A1505;
+  --mid-brown: #5C2E0A;
+  --spice-red: #8B1A0A;
+  --jaggery: #C4721A;
+  --steam: rgba(255,255,255,0.12);
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Cormorant Garamond', serif;
+  --font-hindi: 'Tiro Devanagari Hindi', serif;
+}
 
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* --- Navigation --- */
-        nav {
-            background: rgba(93, 58, 26, 0.98);
-            backdrop-filter: blur(10px);
-            padding: 0.8rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
+html { scroll-behavior: smooth; }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
+body {
+  background: var(--dark-brown);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 18px;
+  overflow-x: hidden;
+  cursor: none;
+}
 
-        .logo-container img {
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-            border: 2px solid var(--secondary);
-            object-fit: cover;
-        }
+/* CUSTOM CURSOR */
+.cursor {
+  width: 12px; height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: screen;
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease-out, width 0.2s, height 0.2s;
+  opacity: 0.5;
+}
+body:hover .cursor { opacity: 1; }
 
-        .logo-text h1 {
-            color: var(--white);
-            font-size: 1.4rem;
-            letter-spacing: 1px;
-        }
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--dark-brown); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
+/* NOISE TEXTURE OVERLAY */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 1000; opacity: 0.4;
+}
 
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: 0.3s;
-            text-transform: uppercase;
-        }
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  padding: 1.2rem 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.4s, backdrop-filter 0.4s;
+}
+nav.scrolled {
+  background: rgba(26, 8, 2, 0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(212,160,23,0.2);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none;
+}
+.nav-logo img {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  object-fit: cover;
+}
+.nav-logo-text {
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  color: var(--cream); opacity: 0.8;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 0.95rem; letter-spacing: 0.12em; text-transform: uppercase;
+  transition: opacity 0.2s, color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 1px;
+  background: var(--gold); transform: scaleX(0); transition: transform 0.3s;
+}
+.nav-links a:hover { opacity: 1; color: var(--gold); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cart-btn {
+  background: var(--gold); color: var(--dark-brown);
+  border: none; padding: 0.5rem 1.2rem;
+  font-family: var(--font-body); font-size: 0.9rem; font-weight: 600;
+  border-radius: 2px; cursor: none;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  transition: background 0.2s, transform 0.2s;
+  position: relative;
+}
+.nav-cart-btn:hover { background: var(--saffron); transform: translateY(-1px); }
+.cart-count {
+  position: absolute; top: -6px; right: -6px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--spice-red); color: white;
+  font-size: 0.65rem; display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+}
 
-        nav a:hover {
-            color: var(--secondary);
-        }
+/* HERO */
+#home {
+  min-height: 100vh;
+  position: relative;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 80% at 70% 50%, rgba(184,92,16,0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 100% at 20% 80%, rgba(139,26,10,0.4) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 85% 15%, rgba(212,160,23,0.15) 0%, transparent 55%),
+    linear-gradient(160deg, #1a0802 0%, #2A1505 40%, #3d1c08 100%);
+}
+.hero-spice-ring {
+  position: absolute; right: -5%; top: 50%; transform: translateY(-50%);
+  width: 700px; height: 700px;
+  border: 1px solid rgba(212,160,23,0.08);
+  border-radius: 50%;
+  animation: rotateRing 40s linear infinite;
+}
+.hero-spice-ring::before {
+  content: ''; position: absolute; inset: 60px;
+  border: 1px solid rgba(212,160,23,0.12);
+  border-radius: 50%;
+}
+.hero-spice-ring::after {
+  content: ''; position: absolute; inset: 120px;
+  border: 1px solid rgba(212,160,23,0.18);
+  border-radius: 50%;
+}
+@keyframes rotateRing { to { transform: translateY(-50%) rotate(360deg); } }
 
-        /* --- Hero Section --- */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://i.ibb.co/j9dvTy3D/Logo.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-            padding: 20px;
-        }
+.hero-content {
+  position: relative; z-index: 10;
+  padding: 0 4rem;
+  max-width: 650px;
+  animation: heroFadeIn 1.2s ease-out both;
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-tagline {
+  font-family: var(--font-hindi);
+  font-size: 1rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.hero-tagline::before, .hero-tagline::after {
+  content: ''; flex: 0 0 40px; height: 1px; background: var(--gold); opacity: 0.5;
+}
+.hero-title {
+  font-family: var(--font-hindi);
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-weight: 400; line-height: 1.1;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 4px 40px rgba(212,160,23,0.3);
+}
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-style: italic; color: var(--gold);
+  margin-bottom: 1.5rem; font-weight: 400;
+  letter-spacing: 0.05em;
+}
+.hero-desc {
+  font-family: var(--font-body);
+  font-size: 1.1rem; line-height: 1.8;
+  color: rgba(253,246,232,0.72);
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+  font-weight: 300;
+}
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--saffron) 0%, var(--deep-amber) 100%);
+  color: white; border: none;
+  padding: 0.9rem 2rem;
+  font-family: var(--font-display); font-size: 1rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: none; text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 24px rgba(232,117,26,0.4);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(232,117,26,0.55); }
+.btn-secondary {
+  background: transparent;
+  color: var(--gold); border: 1px solid var(--gold);
+  padding: 0.9rem 2rem;
+  font-family: var(--font-display); font-size: 1rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: none; text-decoration: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.btn-secondary:hover { background: rgba(212,160,23,0.12); transform: translateY(-2px); }
 
-        .hero h2 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-        }
+.hero-product-float {
+  position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
+  width: 380px;
+  animation: heroFloat 1.5s ease-out 0.3s both, floatBob 6s ease-in-out 2s infinite;
+  filter: drop-shadow(0 20px 60px rgba(184,92,16,0.6));
+  z-index: 10;
+}
+@keyframes heroFloat {
+  from { opacity: 0; transform: translateY(calc(-50% + 40px)); }
+  to { opacity: 1; transform: translateY(-50%); }
+}
+@keyframes floatBob {
+  0%, 100% { transform: translateY(-50%); }
+  50% { transform: translateY(calc(-50% - 12px)); }
+}
+.hero-stats {
+  position: absolute; bottom: 3rem; left: 4rem;
+  display: flex; gap: 3rem; z-index: 10;
+  animation: heroFadeIn 1.2s ease-out 0.6s both;
+}
+.hero-stat span:first-child {
+  display: block;
+  font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--gold);
+}
+.hero-stat span:last-child {
+  font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(253,246,232,0.5);
+}
+.scroll-hint {
+  position: absolute; bottom: 3rem; right: 4rem;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  animation: heroFadeIn 1.2s ease-out 0.9s both; z-index: 10;
+}
+.scroll-hint span {
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(253,246,232,0.4); writing-mode: vertical-lr;
+}
+.scroll-line {
+  width: 1px; height: 60px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.1); }
+}
 
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
+/* STEAM ANIMATION */
+.steam-container {
+  position: absolute; bottom: 45%; left: 55%;
+  pointer-events: none; z-index: 5;
+}
+.steam-line {
+  position: absolute; bottom: 0;
+  width: 3px; border-radius: 2px;
+  background: linear-gradient(to top, rgba(255,255,255,0.3), transparent);
+  animation: steamRise 3s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+.steam-line:nth-child(1) { left: 0; height: 80px; animation-delay: 0s; }
+.steam-line:nth-child(2) { left: 20px; height: 100px; animation-delay: 0.7s; }
+.steam-line:nth-child(3) { left: 40px; height: 70px; animation-delay: 1.4s; }
+@keyframes steamRise {
+  0% { opacity: 0; transform: translateY(0) scaleX(1); }
+  30% { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-80px) scaleX(2); }
+}
 
-        .btn-main {
-            background: var(--accent);
-            color: var(--white);
-            padding: 14px 35px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-        }
+/* MARQUEE */
+.marquee-strip {
+  background: var(--gold);
+  padding: 0.7rem 0;
+  overflow: hidden;
+  position: relative; z-index: 10;
+}
+.marquee-inner {
+  display: flex; gap: 0;
+  animation: marqueeScroll 20s linear infinite;
+  width: max-content;
+}
+.marquee-inner span {
+  font-family: var(--font-display); font-size: 0.85rem; font-weight: 700;
+  color: var(--dark-brown); letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 0 2rem; white-space: nowrap;
+}
+.marquee-dot { color: var(--deep-amber); margin: 0 0.5rem; }
+@keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        .btn-main:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
+/* SECTION COMMON */
+section { position: relative; }
+.section-header {
+  text-align: center; margin-bottom: 4rem;
+}
+.section-label {
+  font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.75rem; display: block;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700; color: var(--cream);
+  line-height: 1.15;
+}
+.section-title em { color: var(--gold); font-style: italic; }
+.section-divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem; margin-top: 1rem;
+}
+.section-divider::before, .section-divider::after {
+  content: ''; flex: 0 0 60px; height: 1px; background: rgba(212,160,23,0.4);
+}
+.section-divider-icon {
+  width: 8px; height: 8px; background: var(--gold);
+  transform: rotate(45deg);
+}
 
-        /* --- Products Section --- */
-        .products {
-            padding: 80px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+/* PRODUCTS SECTION */
+#products {
+  padding: 7rem 4rem;
+  background: linear-gradient(180deg, var(--dark-brown) 0%, #1e0904 50%, var(--dark-brown) 100%);
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.product-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(92,46,10,0.3) 0%, rgba(26,8,2,0.8) 100%);
+  border: 1px solid rgba(212,160,23,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: none;
+  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), border-color 0.3s, box-shadow 0.4s;
+  group: product;
+}
+.product-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(212,160,23,0.06) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.product-card:hover { transform: translateY(-8px); border-color: rgba(212,160,23,0.4); box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(212,160,23,0.1); }
+.product-card:hover::before { opacity: 1; }
+.product-card-img-wrap {
+  position: relative; overflow: hidden;
+  height: 280px;
+  background: radial-gradient(ellipse at center, rgba(92,46,10,0.4) 0%, transparent 70%);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+}
+.product-card-img-wrap img {
+  max-height: 100%; max-width: 100%; object-fit: contain;
+  transition: transform 0.5s cubic-bezier(0.23,1,0.32,1);
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+}
+.product-card:hover .product-card-img-wrap img { transform: scale(1.07) translateY(-4px); }
+.product-badge {
+  position: absolute; top: 1rem; left: 1rem;
+  background: var(--spice-red); color: white;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; padding: 0.25rem 0.6rem;
+}
+.product-bestseller { background: var(--gold); color: var(--dark-brown); }
+.product-card-body { padding: 1.5rem; }
+.product-name {
+  font-family: var(--font-display); font-size: 1.15rem; font-weight: 700;
+  color: var(--cream); margin-bottom: 0.4rem; line-height: 1.3;
+}
+.product-name-hindi {
+  font-family: var(--font-hindi); font-size: 0.9rem;
+  color: rgba(253,246,232,0.5); margin-bottom: 0.75rem;
+}
+.product-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.product-tag {
+  font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.2rem 0.6rem; border: 1px solid rgba(212,160,23,0.3);
+  color: rgba(212,160,23,0.7); border-radius: 2px;
+}
+.product-pricing { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1.25rem; }
+.product-price {
+  font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--gold);
+}
+.product-unit { font-size: 0.8rem; color: rgba(253,246,232,0.5); }
+.product-sizes { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; }
+.size-btn {
+  flex: 1; padding: 0.4rem 0; border: 1px solid rgba(212,160,23,0.2);
+  background: transparent; color: rgba(253,246,232,0.6);
+  font-family: var(--font-body); font-size: 0.8rem; cursor: none;
+  transition: all 0.2s; border-radius: 2px;
+}
+.size-btn.active, .size-btn:hover { background: rgba(212,160,23,0.15); border-color: var(--gold); color: var(--gold); }
+.product-card-actions { display: flex; gap: 0.5rem; }
+.btn-add-cart {
+  flex: 1; padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, var(--saffron), var(--deep-amber));
+  border: none; color: white;
+  font-family: var(--font-display); font-size: 0.85rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: none; transition: all 0.2s;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+.btn-add-cart:hover { box-shadow: 0 4px 20px rgba(232,117,26,0.5); transform: translateY(-1px); }
+.btn-add-cart.added { background: linear-gradient(135deg, #2a7a2a, #1a5a1a); }
+.btn-wish {
+  width: 44px; height: 44px;
+  background: rgba(212,160,23,0.1); border: 1px solid rgba(212,160,23,0.2);
+  color: var(--gold); cursor: none; font-size: 1rem;
+  transition: all 0.2s; flex-shrink: 0;
+}
+.btn-wish:hover { background: rgba(212,160,23,0.2); }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.5rem;
-            color: var(--primary);
-            position: relative;
-        }
+/* WHY US */
+#why {
+  padding: 7rem 4rem;
+  background: linear-gradient(180deg, #1e0904 0%, rgba(26,8,2,0.95) 100%);
+}
+.why-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem; max-width: 1100px; margin: 0 auto;
+}
+.why-card {
+  padding: 2.5rem 2rem; text-align: center;
+  border: 1px solid rgba(212,160,23,0.1);
+  background: linear-gradient(160deg, rgba(92,46,10,0.2) 0%, transparent 100%);
+  transition: transform 0.3s, border-color 0.3s;
+  position: relative; overflow: hidden;
+}
+.why-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0); transition: transform 0.4s;
+}
+.why-card:hover { transform: translateY(-4px); border-color: rgba(212,160,23,0.3); }
+.why-card:hover::before { transform: scaleX(1); }
+.why-icon {
+  font-size: 2.5rem; margin-bottom: 1rem; display: block;
+  filter: drop-shadow(0 2px 8px rgba(212,160,23,0.4));
+}
+.why-title {
+  font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+  color: var(--cream); margin-bottom: 0.6rem;
+}
+.why-desc {
+  font-size: 0.9rem; line-height: 1.7;
+  color: rgba(253,246,232,0.55); font-weight: 300;
+}
 
-        .section-title::after {
-            content: '';
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+/* ABOUT */
+#about {
+  padding: 7rem 4rem;
+  background: var(--dark-brown);
+}
+.about-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+}
+.about-visual {
+  position: relative; display: flex; justify-content: center;
+}
+.about-img-main {
+  width: 340px; border-radius: 4px;
+  filter: drop-shadow(0 20px 50px rgba(0,0,0,0.6));
+  transition: transform 0.5s;
+}
+.about-img-main:hover { transform: scale(1.03); }
+.about-img-accent {
+  position: absolute; bottom: -20px; right: -10px;
+  width: 160px; border-radius: 4px;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.6));
+  border: 3px solid var(--dark-brown);
+}
+.about-corner {
+  position: absolute; top: -15px; left: -15px;
+  width: 80px; height: 80px;
+  border-top: 2px solid var(--gold); border-left: 2px solid var(--gold);
+}
+.about-corner-br {
+  position: absolute; bottom: -30px; right: -25px;
+  width: 80px; height: 80px;
+  border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold);
+}
+.about-text {}
+.about-story {
+  font-family: var(--font-display); font-size: 1.05rem; font-style: italic;
+  color: var(--gold); margin-bottom: 1.5rem; line-height: 1.7;
+  padding-left: 1.5rem; border-left: 2px solid var(--gold);
+}
+.about-para {
+  font-size: 1rem; line-height: 1.9; color: rgba(253,246,232,0.72);
+  margin-bottom: 1.25rem; font-weight: 300;
+}
+.about-highlights {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;
+}
+.about-hl {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+}
+.about-hl-icon { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+.about-hl-text { font-size: 0.9rem; color: rgba(253,246,232,0.65); line-height: 1.5; font-weight: 300; }
+.about-hl-text strong { color: var(--cream); font-weight: 600; display: block; }
 
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
+/* BUY NOW BANNER */
+#buy {
+  padding: 5rem 4rem;
+  background: linear-gradient(135deg, rgba(184,92,16,0.15) 0%, rgba(139,26,10,0.2) 50%, rgba(42,21,5,0.9) 100%);
+  border-top: 1px solid rgba(212,160,23,0.15);
+  border-bottom: 1px solid rgba(212,160,23,0.15);
+}
+.buy-inner {
+  max-width: 1000px; margin: 0 auto;
+  text-align: center;
+}
+.buy-title {
+  font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700; color: var(--cream); margin-bottom: 0.75rem;
+}
+.buy-subtitle {
+  font-family: var(--font-body); font-size: 1.1rem;
+  color: rgba(253,246,232,0.6); margin-bottom: 2.5rem; font-weight: 300;
+}
+.buy-platforms {
+  display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+}
+.buy-platform-btn {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 1rem 2rem;
+  border: 1px solid rgba(212,160,23,0.3);
+  background: rgba(212,160,23,0.06);
+  color: var(--cream); text-decoration: none;
+  font-family: var(--font-body); font-size: 1rem;
+  transition: all 0.3s; cursor: pointer;
+  position: relative; overflow: hidden;
+}
+.buy-platform-btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(212,160,23,0.1);
+  transform: translateX(-100%); transition: transform 0.3s;
+}
+.buy-platform-btn:hover::before { transform: translateX(0); }
+.buy-platform-btn:hover { border-color: var(--gold); transform: translateY(-2px); }
+.buy-platform-icon { font-size: 1.5rem; }
+.buy-platform-info { text-align: left; }
+.buy-platform-name { font-weight: 600; color: var(--cream); display: block; font-size: 0.95rem; }
+.buy-platform-sub { font-size: 0.75rem; color: rgba(253,246,232,0.5); letter-spacing: 0.05em; }
 
-        .product-card {
-            background: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: 0.4s;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-        }
+/* SOCIAL */
+#social {
+  padding: 5rem 4rem;
+  background: var(--dark-brown);
+}
+.social-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+.social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2.5rem; flex-wrap: wrap; }
+.social-btn {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.8rem 1.5rem;
+  background: transparent; border: 1px solid rgba(253,246,232,0.15);
+  color: var(--cream); text-decoration: none;
+  font-family: var(--font-body); font-size: 0.9rem;
+  transition: all 0.3s;
+}
+.social-btn:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+.social-btn svg { width: 18px; height: 18px; fill: currentColor; }
 
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-        }
+/* CONTACT */
+#contact {
+  padding: 5rem 4rem;
+  background: linear-gradient(180deg, var(--dark-brown) 0%, #120602 100%);
+  text-align: center;
+}
+.whatsapp-btn {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  padding: 1.1rem 2.5rem;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white; text-decoration: none;
+  font-family: var(--font-display); font-size: 1.1rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  transition: all 0.3s; cursor: pointer;
+  box-shadow: 0 8px 30px rgba(37,211,102,0.3);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+.whatsapp-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(37,211,102,0.45); }
 
-        .product-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: contain;
-            padding: 20px;
-            background: #fdfdfd;
-        }
+/* CART SIDEBAR */
+.cart-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+  z-index: 800; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  backdrop-filter: blur(4px);
+}
+.cart-overlay.open { opacity: 1; pointer-events: all; }
+.cart-sidebar {
+  position: fixed; top: 0; right: 0; bottom: 0; width: 400px;
+  background: linear-gradient(160deg, #2A1505, #1a0802);
+  border-left: 1px solid rgba(212,160,23,0.2);
+  z-index: 810; transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.cart-sidebar.open { transform: translateX(0); }
+.cart-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(212,160,23,0.15);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.cart-header h2 {
+  font-family: var(--font-display); font-size: 1.3rem; color: var(--gold);
+  letter-spacing: 0.1em;
+}
+.cart-close {
+  background: none; border: none; color: var(--cream);
+  font-size: 1.5rem; cursor: none; opacity: 0.6; transition: opacity 0.2s;
+}
+.cart-close:hover { opacity: 1; }
+.cart-items { flex: 1; overflow-y: auto; padding: 1.5rem 2rem; }
+.cart-empty {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  height: 200px; color: rgba(253,246,232,0.35);
+  font-size: 0.9rem; letter-spacing: 0.1em;
+}
+.cart-empty-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.4; }
+.cart-item {
+  display: flex; gap: 1rem; align-items: center;
+  padding: 1rem 0; border-bottom: 1px solid rgba(212,160,23,0.1);
+  animation: cartItemIn 0.3s ease-out;
+}
+@keyframes cartItemIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+.cart-item-img { width: 60px; height: 70px; object-fit: contain; flex-shrink: 0; }
+.cart-item-info { flex: 1; }
+.cart-item-name { font-family: var(--font-display); font-size: 0.9rem; color: var(--cream); margin-bottom: 0.25rem; }
+.cart-item-size { font-size: 0.75rem; color: rgba(253,246,232,0.45); letter-spacing: 0.08em; }
+.cart-item-price { color: var(--gold); font-weight: 600; font-size: 0.95rem; }
+.cart-item-qty {
+  display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;
+}
+.qty-btn {
+  width: 24px; height: 24px; background: rgba(212,160,23,0.15);
+  border: 1px solid rgba(212,160,23,0.3); color: var(--gold);
+  cursor: none; font-size: 1rem; display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.qty-btn:hover { background: rgba(212,160,23,0.3); }
+.qty-num { font-size: 0.9rem; color: var(--cream); min-width: 20px; text-align: center; }
+.cart-item-remove { background: none; border: none; color: rgba(253,246,232,0.3); cursor: none; font-size: 0.9rem; transition: color 0.2s; }
+.cart-item-remove:hover { color: var(--spice-red); }
+.cart-footer { padding: 1.5rem 2rem; border-top: 1px solid rgba(212,160,23,0.15); }
+.cart-total {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1rem;
+}
+.cart-total-label { font-family: var(--font-display); color: rgba(253,246,232,0.6); letter-spacing: 0.1em; }
+.cart-total-price { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--gold); }
+.btn-checkout {
+  width: 100%; padding: 1rem;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  border: none; color: white;
+  font-family: var(--font-display); font-size: 0.95rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  cursor: none; transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+}
+.btn-checkout:hover { box-shadow: 0 8px 24px rgba(37,211,102,0.4); transform: translateY(-1px); }
 
-        .product-info {
-            padding: 20px;
-            flex-grow: 1;
-        }
+/* FOOTER */
+footer {
+  background: #0a0300;
+  padding: 3rem 4rem 2rem;
+  border-top: 1px solid rgba(212,160,23,0.1);
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem;
+}
+.footer-brand .nav-logo-text { font-size: 1.5rem; display: block; margin-bottom: 0.5rem; }
+.footer-tagline { font-family: var(--font-hindi); color: rgba(253,246,232,0.4); font-size: 0.9rem; }
+.footer-copy {
+  text-align: center; margin-top: 2.5rem;
+  padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.8rem; color: rgba(253,246,232,0.25); letter-spacing: 0.1em;
+}
+.footer-fssai {
+  font-size: 0.75rem; color: rgba(253,246,232,0.3);
+  margin-top: 0.75rem; line-height: 1.6;
+}
 
-        .product-info h3 {
-            margin-bottom: 10px;
-            color: var(--primary);
-            font-size: 1.3rem;
-        }
+/* REVEAL ANIMATION */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
 
-        .price {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 20px;
-        }
-
-        .btn-cart {
-            background: var(--primary);
-            color: var(--white);
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .btn-cart:hover {
-            background: var(--accent);
-        }
-
-        /* --- About Section --- */
-        .about-section {
-            background: var(--white);
-            padding: 80px 5%;
-            text-align: center;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* --- Floating Cart Summary --- */
-        .cart-summary {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--white);
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-            z-index: 999;
-            width: 320px;
-            border: 1px solid var(--secondary);
-        }
-
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-
-        #cart-items {
-            max-height: 200px;
-            overflow-y: auto;
-            margin-bottom: 15px;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-            padding-bottom: 5px;
-            border-bottom: 1px dashed #eee;
-        }
-
-        .cart-total-row {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: var(--primary);
-        }
-
-        /* --- Footer --- */
-        footer {
-            background: var(--primary);
-            color: var(--white);
-            padding: 50px 5%;
-            text-align: center;
-        }
-
-        .social-links {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .social-links a {
-            color: var(--white);
-            font-size: 1.5rem;
-            transition: 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--accent);
-        }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            nav ul { display: none; }
-            .hero h2 { font-size: 2.2rem; }
-            .hero p { font-size: 1rem; }
-            .cart-summary {
-                width: 90%;
-                left: 5%;
-                right: 5%;
-                bottom: 20px;
-            }
-        }
-    </style>
+/* MOBILE */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  #home .hero-product-float { display: none; }
+  .hero-content { max-width: 100%; padding: 6rem 1.5rem 2rem; }
+  #products, #why, #about, #buy, #social, #contact { padding: 4rem 1.5rem; }
+  .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-visual { display: none; }
+  .cart-sidebar { width: 100%; }
+  .hero-stats { bottom: 1.5rem; left: 1.5rem; gap: 1.5rem; }
+  .hero-stats .hero-stat span:first-child { font-size: 1.4rem; }
+  footer { padding: 2rem 1.5rem; }
+}
+</style>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="logo-container">
-            <img src="https://i.ibb.co/j9dvTy3D/Logo.jpg" alt="Chavdar Chaha Logo">
-            <div class="logo-text">
-                <h1>Chavdar Chaha</h1>
-            </div>
-        </a>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="https://wa.me/918080586528">Contact</a></li>
-        </ul>
-    </nav>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-    <section id="home" class="hero">
-        <h2>Chaha cha Badshahh</h2>
-        <p>Premium Amruttulya Tea Premixes. Just add Milk and Water(Take 70-30% or 50-50% ration. As per your requirement) and enjoy the authentic Indian taste instantly.</p>
-        <a href="#products" class="btn-main"><i class="fas fa-shopping-basket"></i> View Products</a>
-    </section>
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#">
+    <img src="https://i.ibb.co/qMZ2PvyC/Logo.jpg" alt="Chavdar Chaha Logo">
+    <span class="nav-logo-text">Chavdar Chaha</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#buy">Buy Now</a></li>
+  </ul>
+  <button class="nav-cart-btn" onclick="toggleCart()">
+    🛒 Cart
+    <span class="cart-count" id="cartCount">0</span>
+  </button>
+</nav>
 
-    <section id="products" class="products">
-        <h2 class="section-title">Our Best Sellers</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="https://i.ibb.co/rYZm1fK/Amrutulya-Masala-Tea-Premix.png" alt="Amruttulya Chaha">
-                <div class="product-info">
-                    <h3>Amruttulya Masala Chaha Premix</h3>
-                    <p class="price">₹350 <small>/ 1kg</small></p>
-                    <button class="btn-cart" onclick="addToCart('Amruttulya Chaha', 350)">Add to Cart</button>
-                </div>
-            </div>
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-spice-ring"></div>
+  <div class="steam-container">
+    <div class="steam-line"></div>
+    <div class="steam-line"></div>
+    <div class="steam-line"></div>
+  </div>
 
-            <div class="product-card">
-                <img src="https://i.ibb.co/mVD1Vb1z/Amruttlya-Cardamom-Premix-Tea.png" alt="Elaichi Chaha">
-                <div class="product-info">
-                    <h3>Elaichi Chaha Premix</h3>
-                    <p class="price">₹350 <small>/ 1kg</small></p>
-                    <button class="btn-cart" onclick="addToCart('Elaichi Chaha', 350)">Add to Cart</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://i.ibb.co/GQtVk7LS/Jaggery-Cardamom-Premix-tea.png" alt="Jaggery Elaichi">
-                <div class="product-info">
-                    <h3>Jaggery Elaichi Premix</h3>
-                    <p class="price">₹399 <small>/ 1kg</small></p>
-                    <button class="btn-cart" onclick="addToCart('Jaggery Elaichi', 399)">Add to Cart</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://i.ibb.co/tw5wF55Y/Jaggery-Basundi-Premix-Tea.png" alt="Jaggery Basundi">
-                <div class="product-info">
-                    <h3>Jaggery Basundi Premix</h3>
-                    <p class="price">₹399 <small>/ 1kg</small></p>
-                    <button class="btn-cart" onclick="addToCart('Jaggery Basundi', 399)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="about-section">
-        <div class="about-content">
-            <h2 class="section-title">About Us</h2>
-            <p>Discover the true taste of Amruttulya Tea with our premium Instant Tea Premixes. We offer a complete range of Amruttulya Premix products available in Sugar and Jaggery (Gudh) variants — crafted to deliver the authentic Indian chai flavor loved by tea enthusiasts.</p>
-            <br>
-            <p>Perfect for homes, offices, cafés, and vending machines. Consistency, taste, and aroma in every cup.</p>
-            <p> All prodcuts are available on Amazon and Meesho</p>
-        </div>
-    </section>
-
-    <div class="cart-summary" id="cart-summary" style="display: none;">
-        <div class="cart-header">
-            <h4 style="color: var(--primary);"><i class="fas fa-shopping-cart"></i> Your Order</h4>
-            <button onclick="resetCart()" style="background: none; border: none; color: #ff4444; cursor: pointer; font-size: 0.8rem;">Clear All</button>
-        </div>
-        <div id="cart-items"></div>
-        <div class="cart-total-row">
-            <span>Total:</span>
-            <span>₹<span id="cart-total">0</span></span>
-        </div>
-        <button class="btn-main" style="width: 100%; margin-top: 15px; border-radius: 10px;" onclick="checkout()">
-            <i class="fab fa-whatsapp"></i> Order on WhatsApp
-        </button>
+  <div class="hero-content">
+    <div class="hero-tagline">चहा चा बादशाह</div>
+    <h1 class="hero-title">चवदार चहा</h1>
+    <p class="hero-subtitle">India's Finest Tea Premix</p>
+    <p class="hero-desc">Premium Amruttulya Tea Premixes crafted with authentic spices, jaggery & cardamom. Just add milk & water — experience the true taste of Indian chai, instantly.</p>
+    <div class="hero-ctas">
+      <a href="#products" class="btn-primary">Explore Products</a>
+      <a href="#buy" class="btn-secondary">Buy Online</a>
     </div>
+  </div>
 
-    <footer>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/chavdar_chaha_tea_premix?igsh=MTNnYzN1YnR6M3BiNQ==&utm_source=ig_contact_invite"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/918080586528"><i class="fab fa-whatsapp"></i></a>
+  <img class="hero-product-float" src="https://i.ibb.co/tw5wF55Y/Jaggery-Basundi-Premix-Tea.png" alt="Chavdar Chaha Jaggery Basundi Tea Premix">
+
+  <div class="hero-stats">
+    <div class="hero-stat"><span>4+</span><span>Variants</span></div>
+    <div class="hero-stat"><span>100%</span><span>Veg</span></div>
+    <div class="hero-stat"><span>Instant</span><span>Premix</span></div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner" id="marqueeInner"></div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-header reveal">
+    <span class="section-label">Our Collection</span>
+    <h2 class="section-title">Handcrafted <em>Tea Premixes</em></h2>
+    <div class="section-divider"><div class="section-divider-icon"></div></div>
+  </div>
+
+  <div class="products-grid" id="productsGrid">
+    <!-- Injected by JS -->
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-header reveal">
+    <span class="section-label">The Chavdar Difference</span>
+    <h2 class="section-title">Why <em>Choose Us?</em></h2>
+    <div class="section-divider"><div class="section-divider-icon"></div></div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal reveal-delay-1">
+      <span class="why-icon">☕</span>
+      <div class="why-title">Instant, No Hassle</div>
+      <p class="why-desc">Just add milk & hot water. No brewing, no strain — authentic chai in seconds.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <span class="why-icon">🌿</span>
+      <div class="why-title">100% Vegetarian</div>
+      <p class="why-desc">All natural ingredients. No artificial flavours or preservatives. Pure, clean chai.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-3">
+      <span class="why-icon">🏺</span>
+      <div class="why-title">Authentic Amruttulya</div>
+      <p class="why-desc">The iconic Pune street chai taste — now in your home, office, or café.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-4">
+      <span class="why-icon">📦</span>
+      <div class="why-title">Hygienic Packaging</div>
+      <p class="why-desc">Sealed foil packs for maximum freshness. 10-month shelf life from manufacturing.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-1">
+      <span class="why-icon">🏭</span>
+      <div class="why-title">FSSAI Certified</div>
+      <p class="why-desc">Manufactured by AMPIROOT FOODS PVT LTD under strict food safety standards.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <span class="why-icon">🤝</span>
+      <div class="why-title">Bulk & Vending</div>
+      <p class="why-desc">Perfect for homes, offices, cafés & tea vending machines. Consistent taste every cup.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-visual reveal">
+      <div class="about-corner"></div>
+      <img class="about-img-main" src="https://i.ibb.co/GQtVk7LS/Jaggery-Cardamom-Premix-tea.png" alt="Chavdar Chaha Product">
+      <img class="about-img-accent" src="https://i.ibb.co/mVD1Vb1z/Amruttlya-Cardamom-Premix-Tea.png" alt="Chavdar Chaha Cardamom Tea">
+      <div class="about-corner-br"></div>
+    </div>
+    <div class="about-text reveal reveal-delay-2">
+      <span class="section-label">Our Story</span>
+      <h2 class="section-title" style="text-align:left; margin-bottom:1.5rem;">The <em>King of Chai</em><br>from Pune</h2>
+      <p class="about-story">"Every sip of Amruttulya is a memory of home, of mornings, of India."</p>
+      <p class="about-para">Chavdar Chaha was born from a simple dream — to bottle the soul of Pune's legendary Amruttulya chai and bring it to every home across India. We blend the finest tea leaves with real spices, jaggery, and cardamom to create premixes that honour tradition while embracing convenience.</p>
+      <p class="about-para">Available in both sugar and jaggery variants, our range caters to every chai lover — from the classic masala chai enthusiast to the jaggery Basundi connoisseur.</p>
+      <div class="about-highlights">
+        <div class="about-hl">
+          <span class="about-hl-icon">✦</span>
+          <div class="about-hl-text"><strong>Made in Pune</strong>Manufactured locally with pride in Maharashtra</div>
         </div>
-        <p>© 2026 Chavdar Chaha | Crafted by Swapnil Pandit (MD & CEO)</p>
-        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Chavdar Chaha | Chaha cha Badshahh</p>
-    </footer>
+        <div class="about-hl">
+          <span class="about-hl-icon">✦</span>
+          <div class="about-hl-text"><strong>70-30 or 50-50</strong>Customise your milk-to-water ratio your way</div>
+        </div>
+        <div class="about-hl">
+          <span class="about-hl-icon">✦</span>
+          <div class="about-hl-text"><strong>FSSAI Licensed</strong>Lic No: 21526035022884</div>
+        </div>
+        <div class="about-hl">
+          <span class="about-hl-icon">✦</span>
+          <div class="about-hl-text"><strong>Available Online</strong>Amazon, Meesho & WhatsApp order</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        let cart = [];
-        let total = 0;
+<!-- BUY NOW -->
+<section id="buy">
+  <div class="buy-inner reveal">
+    <span class="section-label">Available On</span>
+    <h2 class="buy-title">Get Your Chavdar Chaha Now</h2>
+    <p class="buy-subtitle">Order online or reach us directly on WhatsApp for bulk & custom orders</p>
+    <div class="buy-platforms">
+      <a class="buy-platform-btn" href="https://www.amazon.in/dp/B0GSRBX8B3" target="_blank">
+        <span class="buy-platform-icon">📦</span>
+        <div class="buy-platform-info">
+          <span class="buy-platform-name">Amazon India</span>
+          <span class="buy-platform-sub">Fast delivery nationwide</span>
+        </div>
+      </a>
+      <a class="buy-platform-btn" href="https://www.meesho.com/chavdar-chaha-jaggery-basundi-premix-tea-instant-premix-no-tea-making-hassle-1kg-150gram7-sachet/p/et5bgf" target="_blank">
+        <span class="buy-platform-icon">🛒</span>
+        <div class="buy-platform-info">
+          <span class="buy-platform-name">Meesho</span>
+          <span class="buy-platform-sub">Great deals & offers</span>
+        </div>
+      </a>
+      <a class="buy-platform-btn" href="https://wa.me/918080586528" target="_blank">
+        <span class="buy-platform-icon">💬</span>
+        <div class="buy-platform-info">
+          <span class="buy-platform-name">WhatsApp Order</span>
+          <span class="buy-platform-sub">Direct & bulk orders</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
-        function addToCart(name, price) {
-            cart.push({name, price});
-            total += price;
-            updateCartUI();
-            
-            // Subtle animation feedback
-            const summary = document.getElementById('cart-summary');
-            summary.style.transform = "scale(1.05)";
-            setTimeout(() => summary.style.transform = "scale(1)", 200);
-        }
+<!-- SOCIAL -->
+<section id="social">
+  <div class="social-inner reveal">
+    <span class="section-label">Follow Us</span>
+    <h2 class="section-title">Join Our <em>Chai Community</em></h2>
+    <p style="color:rgba(253,246,232,0.5); margin-top:0.75rem; font-size:1rem;">Stay updated with new flavours, offers, and chai stories</p>
+    <div class="social-links">
+      <a class="social-btn" href="https://www.instagram.com/chavdar_chaha_tea_premix" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+      <a class="social-btn" href="https://www.youtube.com/@ChavdarChaha" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+        YouTube
+      </a>
+      <a class="social-btn" href="https://wa.me/918080586528" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
 
-        function updateCartUI() {
-            const summary = document.getElementById('cart-summary');
-            const itemsList = document.getElementById('cart-items');
-            const totalSpan = document.getElementById('cart-total');
-            
-            if (cart.length > 0) {
-                summary.style.display = 'block';
-                itemsList.innerHTML = cart.map((item, index) => `
-                    <div class="cart-item">
-                        <span>${item.name}</span>
-                        <span>₹${item.price}</span>
-                    </div>
-                `).join('');
-                totalSpan.innerText = total;
-            } else {
-                summary.style.display = 'none';
-            }
-        }
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <span class="section-label">Get In Touch</span>
+    <h2 class="section-title" style="margin-bottom:0.5rem;">Order or <em>Enquire</em></h2>
+    <p style="color:rgba(253,246,232,0.5); margin:1rem 0 2rem; font-size:1rem;">For bulk orders, wholesale, or any queries — chat with us directly</p>
+    <a class="whatsapp-btn" href="https://wa.me/918080586528" target="_blank">
+      💬 Chat on WhatsApp
+    </a>
+    <div class="footer-fssai" style="margin-top:2rem;">
+      Manufactured by: AMPIROOT FOODS PVT LTD, Gat No. 62, Maraubboarea, Dhanore Neer, Randi, Tlel, Khed, Pune Rural, Maharashtra – 421105<br>
+      FSSAI Lic No: 11523030000243 | Sales & Marketed by Chavdar Chaha, Gat No 559, Royal Park, Jayraj Residency, Wagholi, Pune – 412207 | FSSAI Lic No: 21526035022884
+    </div>
+  </div>
+</section>
 
-        function resetCart() {
-            cart = [];
-            total = 0;
-            updateCartUI();
-        }
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="nav-logo-text">Chavdar Chaha</span>
+      <span class="footer-tagline">चहा चा बादशाह</span>
+    </div>
+    <div style="font-size:0.85rem; color:rgba(253,246,232,0.35); line-height:2;">
+      <div><a href="https://www.amazon.in/dp/B0GSRBX8B3" target="_blank" style="color:inherit;">📦 Amazon India</a></div>
+      <div><a href="https://www.meesho.com/chavdar-chaha-jaggery-basundi-premix-tea-instant-premix-no-tea-making-hassle-1kg-150gram7-sachet/p/et5bgf" target="_blank" style="color:inherit;">🛒 Meesho</a></div>
+      <div><a href="https://www.instagram.com/chavdar_chaha_tea_premix" target="_blank" style="color:inherit;">📸 Instagram</a></div>
+      <div><a href="https://www.youtube.com/@ChavdarChaha" target="_blank" style="color:inherit;">▶ YouTube</a></div>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 Chavdar Chaha | Crafted with ❤️ by Swapnil Pandit (MD & CEO) | Pune, Maharashtra</p>
+</footer>
 
-        function checkout() {
-            if (cart.length === 0) return;
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h2>Your Order</h2>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <div class="cart-empty-icon">🍵</div>
+      <span>Your cart is empty</span>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-price" id="cartTotal">₹0</span>
+    </div>
+    <button class="btn-checkout" id="checkoutBtn" onclick="orderWhatsApp()">
+      💬 Order on WhatsApp
+    </button>
+  </div>
+</div>
 
-            let message = "Hello Chavdar Chaha! 👋\nI'd like to place an order:\n\n";
-            
-            // Combine duplicates for a cleaner message
-            const counts = {};
-            cart.forEach(item => counts[item.name] = (counts[item.name] || 0) + 1);
-            
-            for (const [name, count] of Object.entries(counts)) {
-                message += `✅ ${name} x ${count}\n`;
-            }
-            
-            message += `\n*Total Payable: ₹${total}*`;
-            message += "\n\nPlease share payment details and delivery time.";
-            
-            const encodedMessage = encodeURIComponent(message);
-            // Added 91 country code for India
-            const whatsappUrl = `https://wa.me/918080586528?text=${encodedMessage}`;
-            
-            // Open in new tab/app
-            window.open(whatsappUrl, '_blank');
-        }
-    </script>
+<script>
+// CURSOR
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function animCursor() {
+  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  cursorRing.style.left = rx + 'px'; cursorRing.style.top = ry + 'px';
+  requestAnimationFrame(animCursor);
+})();
+document.querySelectorAll('a, button, [onclick]').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.style.width = '20px'; cursor.style.height = '20px'; cursorRing.style.width = '50px'; cursorRing.style.height = '50px'; });
+  el.addEventListener('mouseleave', () => { cursor.style.width = '12px'; cursor.style.height = '12px'; cursorRing.style.width = '36px'; cursorRing.style.height = '36px'; });
+});
+
+// NAV SCROLL
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// MARQUEE
+const items = ['Amruttulya Masala', 'Jaggery Cardamom', 'Jaggery Basundi', 'Cardamom Premix', 'No Tea Making Hassle', 'Instant Premix', 'Pure & Natural', 'FSSAI Certified', '100% Veg'];
+const mi = document.getElementById('marqueeInner');
+const full = [...items, ...items, ...items, ...items].map(t => `<span>${t} <span class="marquee-dot">✦</span></span>`).join('');
+mi.innerHTML = full + full;
+
+// PRODUCTS DATA
+const products = [
+  {
+    id: 1,
+    name: 'Amruttulya Masala Chaha',
+    nameHindi: 'अमृततुल्य मसाला चहा',
+    img: 'https://i.ibb.co/rYZm1fK/Amrutulya-Masala-Tea-Premix.png',
+    tags: ['Instant', 'Classic', 'Masala'],
+    prices: { '125g': 50, '1kg': 350 },
+    badge: 'Best Seller', badgeClass: 'product-bestseller',
+  },
+  {
+    id: 2,
+    name: 'Amruttulya Cardamom Chaha',
+    nameHindi: 'अमृततुल्य एलची चहा',
+    img: 'https://i.ibb.co/mVD1Vb1z/Amruttlya-Cardamom-Premix-Tea.png',
+    tags: ['Instant', 'Elaichi', 'Aromatic'],
+    prices: { '125g': 50, '1kg': 350 },
+    badge: null,
+  },
+  {
+    id: 3,
+    name: 'Jaggery Cardamom Chaha',
+    nameHindi: 'गूळ एलची चहा',
+    img: 'https://i.ibb.co/GQtVk7LS/Jaggery-Cardamom-Premix-tea.png',
+    tags: ['Jaggery', 'Elaichi', 'Natural'],
+    prices: { '120g': 60, '1kg': 399 },
+    badge: 'New',
+  },
+  {
+    id: 4,
+    name: 'Jaggery Basundi Chaha',
+    nameHindi: 'गूळ बासुंदी चहा',
+    img: 'https://i.ibb.co/tw5wF55Y/Jaggery-Basundi-Premix-Tea.png',
+    tags: ['Jaggery', 'Basundi', 'Special'],
+    prices: { '150g': 70, '1kg': 399 },
+    badge: 'Popular',
+  },
+];
+
+// Cart
+let cart = {};
+let selectedSizes = {};
+products.forEach(p => { selectedSizes[p.id] = Object.keys(p.prices)[1]; });
+
+function renderProducts() {
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = products.map(p => {
+    const sizes = Object.keys(p.prices);
+    const selSize = selectedSizes[p.id];
+    const price = p.prices[selSize];
+    return `
+    <div class="product-card reveal reveal-delay-${(p.id % 4) + 1}">
+      <div class="product-card-img-wrap">
+        ${p.badge ? `<div class="product-badge ${p.badgeClass || ''}">${p.badge}</div>` : ''}
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+      </div>
+      <div class="product-card-body">
+        <div class="product-name">${p.name}</div>
+        <div class="product-name-hindi">${p.nameHindi}</div>
+        <div class="product-tags">${p.tags.map(t => `<span class="product-tag">${t}</span>`).join('')}</div>
+        <div class="product-sizes">
+          ${sizes.map(s => `<button class="size-btn ${s === selSize ? 'active' : ''}" onclick="selectSize(${p.id}, '${s}')">${s}</button>`).join('')}
+        </div>
+        <div class="product-pricing">
+          <span class="product-price">₹${price}</span>
+          <span class="product-unit">/ ${selSize}</span>
+        </div>
+        <div class="product-card-actions">
+          <button class="btn-add-cart" id="addBtn-${p.id}" onclick="addToCart(${p.id})">Add to Cart</button>
+          <button class="btn-wish" onclick="this.textContent = this.textContent === '♡' ? '♥' : '♡'">♡</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  observeReveal();
+}
+
+function selectSize(id, size) {
+  selectedSizes[id] = size;
+  renderProducts();
+}
+
+function addToCart(id) {
+  const p = products.find(x => x.id === id);
+  const size = selectedSizes[id];
+  const key = `${id}_${size}`;
+  if (cart[key]) cart[key].qty++;
+  else cart[key] = { ...p, size, price: p.prices[size], qty: 1 };
+  updateCartUI();
+  const btn = document.getElementById('addBtn-' + id);
+  if (btn) { btn.textContent = '✓ Added'; btn.classList.add('added'); setTimeout(() => { btn.textContent = 'Add to Cart'; btn.classList.remove('added'); }, 1500); }
+}
+
+function updateCartUI() {
+  const total = Object.values(cart).reduce((s, i) => s + i.price * i.qty, 0);
+  const count = Object.values(cart).reduce((s, i) => s + i.qty, 0);
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartTotal').textContent = '₹' + total;
+  const itemsEl = document.getElementById('cartItems');
+  if (!count) { itemsEl.innerHTML = '<div class="cart-empty"><div class="cart-empty-icon">🍵</div><span>Your cart is empty</span></div>'; return; }
+  itemsEl.innerHTML = Object.entries(cart).map(([key, item]) => `
+    <div class="cart-item">
+      <img class="cart-item-img" src="${item.img}" alt="${item.name}">
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-size">${item.size}</div>
+        <div class="cart-item-price">₹${item.price}</div>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeQty('${key}', -1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty('${key}', 1)">+</button>
+        </div>
+      </div>
+      <button class="cart-item-remove" onclick="removeItem('${key}')">✕</button>
+    </div>`).join('');
+}
+
+function changeQty(key, delta) {
+  cart[key].qty += delta;
+  if (cart[key].qty <= 0) delete cart[key];
+  updateCartUI();
+}
+function removeItem(key) { delete cart[key]; updateCartUI(); }
+
+function toggleCart() {
+  document.getElementById('cartSidebar').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('open');
+}
+
+function orderWhatsApp() {
+  const items = Object.values(cart);
+  if (!items.length) return;
+  const lines = items.map(i => `• ${i.name} (${i.size}) × ${i.qty} = ₹${i.price * i.qty}`).join('%0A');
+  const total = items.reduce((s, i) => s + i.price * i.qty, 0);
+  const msg = `Hello! I'd like to order:%0A%0A${lines}%0A%0A*Total: ₹${total}*%0A%0APlease confirm availability.`;
+  window.open(`https://wa.me/918080586528?text=${msg}`, '_blank');
+}
+
+// REVEAL
+function observeReveal() {
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  els.forEach(el => obs.observe(el));
+}
+
+renderProducts();
+observeReveal();
+</script>
 </body>
 </html>
